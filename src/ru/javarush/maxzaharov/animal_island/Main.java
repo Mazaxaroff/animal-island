@@ -10,7 +10,9 @@ import java.util.Arrays;
 public class Main {
     public static void main(String[] args) {
         ArrayList<Animal>[][] island = Island.fill(Island.createIsland());
-        System.out.println(Arrays.deepToString(island));
+        Arrays.stream(island).map(Arrays::toString).forEach(System.out::println);
+
+
 
     }
 }

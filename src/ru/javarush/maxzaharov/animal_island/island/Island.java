@@ -2,18 +2,18 @@ package ru.javarush.maxzaharov.animal_island.island;
 
 import lombok.Data;
 import ru.javarush.maxzaharov.animal_island.animals.abstracts.Animal;
+import ru.javarush.maxzaharov.animal_island.animals.carnivore.Eagle;
 import ru.javarush.maxzaharov.animal_island.animals.carnivore.Wolf;
+import ru.javarush.maxzaharov.animal_island.animals.herbivore.Mouse;
+
 import java.util.ArrayList;
+import java.util.Arrays;
 
 @Data
 public class Island {
-    public static int widthOfIsland = 20;
-    public static int heightOfIsland = 100;
+    public static int widthOfIsland = 4;
+    public static int heightOfIsland = 3;
 
-    @Override
-    public String toString() {
-        return "Island{}";
-    }
 
     public static ArrayList<Animal>[][] createIsland(){
         return new ArrayList[widthOfIsland][heightOfIsland];
@@ -23,13 +23,20 @@ public class Island {
         for (int i = 0; i < island.length; i++) {
             for (int j = 0; j < island[i].length; j++) {
                 island[i][j] = new ArrayList<>();;
-                island[i][j].add(new Wolf());
+                //island[i][j].add(new Wolf());
             }
         }
+        island[1][1].add(new Wolf());
+        island[1][1].add(new Eagle());
+        island[2][2].add(new Mouse());
         return island;
     }
 
     public void run(Animal animal){
+
+    }
+
+    public void turnRight(){
 
     }
 
