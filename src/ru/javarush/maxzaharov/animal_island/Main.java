@@ -8,6 +8,7 @@ import ru.javarush.maxzaharov.animal_island.island.Island;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+
 public class Main {
     public static void main(String[] args) {
         ArrayList<BasicUnit>[][] island = Island.fill(Island.createIsland());
@@ -15,24 +16,7 @@ public class Main {
 
         System.out.println();
 
-        for (int i = 0; i < island.length - 1; i++) {
-            for (int j = 0; j < island[i].length - 1; j++) {
-                for (BasicUnit animal : island[i][j]) {
-                    if (animal instanceof Animal) {
-                        if (((Animal) animal).isCanMove()) {
-                            if (island[i][j].contains(animal)) {
-                                island[i][j + 1].add(animal);
-                                island[i][j].remove(animal);
-                                break;
-                            }
-                        }
-                    }
-                    break;
-                }
-                break;
-            }
-        }
+        Animal wolf = new Wolf();
 
-        Arrays.stream(island).map(Arrays::toString).forEach(System.out::println);
     }
 }

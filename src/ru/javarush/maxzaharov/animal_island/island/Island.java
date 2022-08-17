@@ -1,16 +1,11 @@
 package ru.javarush.maxzaharov.animal_island.island;
 
-
-import ru.javarush.maxzaharov.animal_island.animals.abstracts.Animal;
 import ru.javarush.maxzaharov.animal_island.animals.abstracts.BasicUnit;
-import ru.javarush.maxzaharov.animal_island.animals.carnivore.Eagle;
+
 import ru.javarush.maxzaharov.animal_island.animals.carnivore.Wolf;
-import ru.javarush.maxzaharov.animal_island.animals.herbivore.Goat;
-import ru.javarush.maxzaharov.animal_island.animals.herbivore.Mouse;
-import ru.javarush.maxzaharov.animal_island.animals.herbivore.Sheep;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+
 
 
 public class Island {
@@ -32,4 +27,6 @@ public class Island {
         island[0][1].add(new Wolf());
         return island;
     }
+
+
 }

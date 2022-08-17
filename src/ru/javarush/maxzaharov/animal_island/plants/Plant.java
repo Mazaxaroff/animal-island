@@ -7,6 +7,6 @@ import java.util.ArrayList;
 
 
 public class Plant extends BasicUnit {
-    public int weight = 1;
+    public double weight = 1;
 
    }

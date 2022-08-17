@@ -1,22 +1,15 @@
 package ru.javarush.maxzaharov.animal_island.animals.abstracts;
 
 public abstract class Animal extends BasicUnit {
-    public int weight;
-    public int speed;
-    public int maxSatiety;
-    public int currentSatiety;
-    public boolean isCanMultiply;
-    public int maxAnimalThisTypeOnTheField;
-    public boolean isCanMove;
-    public boolean isCanEat;
-
-    public int getWeight() {
-        return weight;
-    }
-
-    public void setWeight(int weight) {
-        this.weight = weight;
-    }
+    private int speed;
+    private int maxAnimalThisTypeOnTheField;
+    private double weight;
+    private double maxSatiety;
+    private double currentSatiety;
+    private boolean isCanMultiply = true;
+    private boolean isCanMove = true;
+    private boolean isCanEat = true;
+    private boolean isAlive = true;
 
     public int getSpeed() {
         return speed;
@@ -26,19 +19,35 @@ public abstract class Animal extends BasicUnit {
         this.speed = speed;
     }
 
-    public int getMaxSatiety() {
+    public int getMaxAnimalThisTypeOnTheField() {
+        return maxAnimalThisTypeOnTheField;
+    }
+
+    public void setMaxAnimalThisTypeOnTheField(int maxAnimalThisTypeOnTheField) {
+        this.maxAnimalThisTypeOnTheField = maxAnimalThisTypeOnTheField;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
+
+    public double getMaxSatiety() {
         return maxSatiety;
     }
 
-    public void setMaxSatiety(int maxSatiety) {
+    public void setMaxSatiety(double maxSatiety) {
         this.maxSatiety = maxSatiety;
     }
 
-    public int getCurrentSatiety() {
+    public double getCurrentSatiety() {
         return currentSatiety;
     }
 
-    public void setCurrentSatiety(int currentSatiety) {
+    public void setCurrentSatiety(double currentSatiety) {
         this.currentSatiety = currentSatiety;
     }
 
@@ -48,14 +57,6 @@ public abstract class Animal extends BasicUnit {
 
     public void setCanMultiply(boolean canMultiply) {
         isCanMultiply = canMultiply;
-    }
-
-    public int getMaxAnimalThisTypeOnTheField() {
-        return maxAnimalThisTypeOnTheField;
-    }
-
-    public void setMaxAnimalThisTypeOnTheField(int maxAnimalThisTypeOnTheField) {
-        this.maxAnimalThisTypeOnTheField = maxAnimalThisTypeOnTheField;
     }
 
     public boolean isCanMove() {
@@ -72,6 +73,14 @@ public abstract class Animal extends BasicUnit {
 
     public void setCanEat(boolean canEat) {
         isCanEat = canEat;
+    }
+
+    public boolean isAlive() {
+        return isAlive;
+    }
+
+    public void setAlive(boolean alive) {
+        isAlive = alive;
     }
 }
 
