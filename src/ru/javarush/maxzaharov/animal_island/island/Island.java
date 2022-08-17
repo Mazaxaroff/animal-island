@@ -1,6 +1,6 @@
 package ru.javarush.maxzaharov.animal_island.island;
 
-import lombok.Data;
+
 import ru.javarush.maxzaharov.animal_island.animals.abstracts.Animal;
 import ru.javarush.maxzaharov.animal_island.animals.abstracts.BasicUnit;
 import ru.javarush.maxzaharov.animal_island.animals.carnivore.Eagle;

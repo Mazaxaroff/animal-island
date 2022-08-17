@@ -18,10 +18,14 @@ public class Main {
         for (int i = 0; i < island.length - 1; i++) {
             for (int j = 0; j < island[i].length - 1; j++) {
                 for (BasicUnit animal : island[i][j]) {
-                    if (island[i][j].contains(animal)) {
-                        island[i][j + 1].add(animal);
-                        island[i][j].remove(animal);
-                        break;
+                    if (animal instanceof Animal) {
+                        if (((Animal) animal).isCanMove()) {
+                            if (island[i][j].contains(animal)) {
+                                island[i][j + 1].add(animal);
+                                island[i][j].remove(animal);
+                                break;
+                            }
+                        }
                     }
                     break;
                 }
@@ -29,6 +33,6 @@ public class Main {
             }
         }
 
-         Arrays.stream(island).map(Arrays::toString).forEach(System.out::println);
+        Arrays.stream(island).map(Arrays::toString).forEach(System.out::println);
     }
 }
