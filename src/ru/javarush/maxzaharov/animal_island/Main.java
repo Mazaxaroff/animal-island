@@ -14,9 +14,10 @@ public class Main {
         Sector[][] island = Island.create(wolves);
         Sector firstSector = island[0][0];
         //Arrays.stream(Island.create()).map(Arrays::toString).forEach(System.out::println);
-        System.out.println(firstSector.plants);
+       //System.out.println(firstSector.plants);
 
-        wolves.forEach(wolf -> wolf.move());
+        Arrays.stream(island).map(Arrays::toString).forEach(System.out::println);
+
 
     }
 }

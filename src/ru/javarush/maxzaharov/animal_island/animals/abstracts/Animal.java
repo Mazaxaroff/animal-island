@@ -1,10 +1,12 @@
 package ru.javarush.maxzaharov.animal_island.animals.abstracts;
 
+import ru.javarush.maxzaharov.animal_island.interfases.Eatable;
+import ru.javarush.maxzaharov.animal_island.interfases.Fertile;
+import ru.javarush.maxzaharov.animal_island.interfases.Moveable;
 import ru.javarush.maxzaharov.animal_island.Sector;
 
-public abstract class Animal extends BasicUnit {
+public abstract class Animal extends BasicUnit implements Moveable, Eatable, Fertile {
     private int speed;
-    private int maxAnimalThisTypeOnTheField;
     private double weight;
     private double maxSatiety;
     private double currentSatiety;
@@ -12,27 +14,64 @@ public abstract class Animal extends BasicUnit {
     private boolean isCanMove = true;
     private boolean isCanEat = true;
     private boolean isAlive = true;
+    int x;
+    int y;
+    Sector sector;
 
-    public Animal(int x, int y, Sector sector) {
-        super(x, y);
+    @Override
+    public int getX() {
+        return x;
     }
-    public void move(){
-        System.out.println(this.x + " " + this.y + " -я здесь!");
+
+    @Override
+    public void setX(int x) {
+        this.x = x;
     }
+
+    @Override
+    public int getY() {
+        return y;
+    }
+
+    @Override
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    @Override
+    public Sector getSector() {
+        return sector;
+    }
+
+    @Override
+    public void setSector(Sector sector) {
+        this.sector = sector;
+    }
+
+    @Override
+    public void eat() {
+
+    }
+
+    @Override
+    public void reproduction() {
+
+    }
+
+    @Override
+    public void move() {
+        }
+
+    public Animal(Sector sector) {
+        super(sector);
+    }
+
     public int getSpeed() {
         return speed;
     }
 
     public void setSpeed(int speed) {
         this.speed = speed;
-    }
-
-    public int getMaxAnimalThisTypeOnTheField() {
-        return maxAnimalThisTypeOnTheField;
-    }
-
-    public void setMaxAnimalThisTypeOnTheField(int maxAnimalThisTypeOnTheField) {
-        this.maxAnimalThisTypeOnTheField = maxAnimalThisTypeOnTheField;
     }
 
     public double getWeight() {

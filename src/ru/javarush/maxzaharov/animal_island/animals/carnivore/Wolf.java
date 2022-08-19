@@ -5,19 +5,12 @@ import ru.javarush.maxzaharov.animal_island.animals.abstracts.Carnivorous;
 
 public class Wolf extends Carnivorous {
     private int speed = 3;
-    public static int MAX_ANIMAL_THIS_TYPE_ON_THE_FIELD = 30;
     private double weight = 50;
     private double maxSatiety = 8;
     private double currentSatiety = 8;
 
-    public Wolf(int x, int y, Sector sector) {
-        super(x, y);
-    }
-
-    @Override
-    public void move() {
-        super.move();
-        System.out.println("А еще я волк!");
+    public Wolf(Sector sector) {
+        super(sector);
     }
 
     @Override
@@ -28,16 +21,6 @@ public class Wolf extends Carnivorous {
     @Override
     public void setSpeed(int speed) {
         this.speed = speed;
-    }
-
-    @Override
-    public int getMaxAnimalThisTypeOnTheField() {
-        return MAX_ANIMAL_THIS_TYPE_ON_THE_FIELD;
-    }
-
-    @Override
-    public void setMaxAnimalThisTypeOnTheField(int maxAnimalThisTypeOnTheField) {
-        this.MAX_ANIMAL_THIS_TYPE_ON_THE_FIELD = maxAnimalThisTypeOnTheField;
     }
 
     @Override
@@ -69,5 +52,14 @@ public class Wolf extends Carnivorous {
     public void setCurrentSatiety(double currentSatiety) {
         this.currentSatiety = currentSatiety;
     }
+
+    @Override
+    public void move() {
+        System.out.println(this.getSector().getX() + " " + this.getSector().getY() + " Это мои координаты");
+    }
 }
+
+
+
+
 

@@ -1,14 +1,17 @@
 package ru.javarush.maxzaharov.animal_island.animals.herbivore;
 
+import ru.javarush.maxzaharov.animal_island.Sector;
 import ru.javarush.maxzaharov.animal_island.animals.abstracts.Herbivorous;
 
 public class Caterpillar extends Herbivorous {
     private int speed = 0;
-    private int maxAnimalThisTypeOnTheField = 1000;
     private double weight = 0.01;
     private double maxSatiety = 0;
     private double currentSatiety = 0;
 
+    public Caterpillar(Sector sector) {
+        super(sector);
+    }
 
     @Override
     public int getSpeed() {
@@ -18,16 +21,6 @@ public class Caterpillar extends Herbivorous {
     @Override
     public void setSpeed(int speed) {
         this.speed = speed;
-    }
-
-    @Override
-    public int getMaxAnimalThisTypeOnTheField() {
-        return maxAnimalThisTypeOnTheField;
-    }
-
-    @Override
-    public void setMaxAnimalThisTypeOnTheField(int maxAnimalThisTypeOnTheField) {
-        this.maxAnimalThisTypeOnTheField = maxAnimalThisTypeOnTheField;
     }
 
     @Override
@@ -58,9 +51,5 @@ public class Caterpillar extends Herbivorous {
     @Override
     public void setCurrentSatiety(double currentSatiety) {
         this.currentSatiety = currentSatiety;
-    }
-
-    public Caterpillar(int x, int y) {
-        super(x, y);
     }
 }

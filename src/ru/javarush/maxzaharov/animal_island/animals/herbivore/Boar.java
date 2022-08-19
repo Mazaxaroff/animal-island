@@ -1,18 +1,18 @@
 package ru.javarush.maxzaharov.animal_island.animals.herbivore;
 
+import ru.javarush.maxzaharov.animal_island.Sector;
 import ru.javarush.maxzaharov.animal_island.animals.abstracts.Herbivorous;
 
 public class Boar extends Herbivorous {
     private int speed = 2;
-    private int maxAnimalThisTypeOnTheField = 50;
     private double weight = 400;
     private double maxSatiety = 50;
     private double currentSatiety = 50;
 
-    public Boar(int x, int y) {
-        super(x, y);
-    }
 
+    public Boar(Sector sector) {
+        super(sector);
+    }
 
     @Override
     public int getSpeed() {
@@ -22,16 +22,6 @@ public class Boar extends Herbivorous {
     @Override
     public void setSpeed(int speed) {
         this.speed = speed;
-    }
-
-    @Override
-    public int getMaxAnimalThisTypeOnTheField() {
-        return maxAnimalThisTypeOnTheField;
-    }
-
-    @Override
-    public void setMaxAnimalThisTypeOnTheField(int maxAnimalThisTypeOnTheField) {
-        this.maxAnimalThisTypeOnTheField = maxAnimalThisTypeOnTheField;
     }
 
     @Override

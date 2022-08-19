@@ -1,18 +1,17 @@
 package ru.javarush.maxzaharov.animal_island.animals.carnivore;
 
+import ru.javarush.maxzaharov.animal_island.Sector;
 import ru.javarush.maxzaharov.animal_island.animals.abstracts.Carnivorous;
 
 public class Eagle extends Carnivorous {
     private int speed = 3;
-    private int maxAnimalThisTypeOnTheField = 20;
     private double weight = 6;
     private double maxSatiety = 1;
     private double currentSatiety = 1;
 
-    public Eagle(int x, int y) {
-        super(x, y);
+    public Eagle(Sector sector) {
+        super(sector);
     }
-
 
     @Override
     public int getSpeed() {
@@ -22,16 +21,6 @@ public class Eagle extends Carnivorous {
     @Override
     public void setSpeed(int speed) {
         this.speed = speed;
-    }
-
-    @Override
-    public int getMaxAnimalThisTypeOnTheField() {
-        return maxAnimalThisTypeOnTheField;
-    }
-
-    @Override
-    public void setMaxAnimalThisTypeOnTheField(int maxAnimalThisTypeOnTheField) {
-        this.maxAnimalThisTypeOnTheField = maxAnimalThisTypeOnTheField;
     }
 
     @Override

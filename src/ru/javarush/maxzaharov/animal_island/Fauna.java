@@ -1,6 +1,19 @@
 package ru.javarush.maxzaharov.animal_island;
 
 public enum Fauna {
+    BEAR,
+    BOA,
+    EAGLE,
+    FOX,
     WOLF,
-    DUCK
+    BOAR,
+    BUFFALO,
+    CATERPILLAR,
+    DEER,
+    DUCK,
+    GOAT,
+    HORSE,
+    MOUSE,
+    RABBIT,
+    SHEEP
 }

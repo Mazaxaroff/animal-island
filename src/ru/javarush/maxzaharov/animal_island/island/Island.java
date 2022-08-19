@@ -13,7 +13,7 @@ import java.util.Map;
 public class Island {
     private static final int WIDTH_OF_ISLAND = 5;
     private static final int HEIGHT_OF_ISLAND = 5;
-    private static final Sector[][] LAND = new Sector[WIDTH_OF_ISLAND][HEIGHT_OF_ISLAND];
+    public static final Sector[][] LAND = new Sector[WIDTH_OF_ISLAND][HEIGHT_OF_ISLAND];
 
     public static Sector[][] create(ArrayList<Wolf> wolves){
 //        Sector[][] island = new HashMap<>();
