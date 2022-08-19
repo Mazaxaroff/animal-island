@@ -1,31 +1,31 @@
 package ru.javarush.maxzaharov.animal_island.island;
 
-import ru.javarush.maxzaharov.animal_island.animals.abstracts.BasicUnit;
 
+import ru.javarush.maxzaharov.animal_island.Sector;
+import ru.javarush.maxzaharov.animal_island.animals.abstracts.BasicUnit;
 import ru.javarush.maxzaharov.animal_island.animals.carnivore.Wolf;
 
 import java.util.ArrayList;
-
-
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class Island {
-    public static int widthOfIsland = 5;
-    public static int heightOfIsland = 5;
+    private static final int WIDTH_OF_ISLAND = 5;
+    private static final int HEIGHT_OF_ISLAND = 5;
+    private static final Sector[][] LAND = new Sector[WIDTH_OF_ISLAND][HEIGHT_OF_ISLAND];
 
+    public static Sector[][] create(ArrayList<Wolf> wolves){
+//        Sector[][] island = new HashMap<>();
+//       island.put(LAND, new ArrayList<>());
 
-    public static ArrayList<BasicUnit>[][] createIsland() {
-        return new ArrayList[widthOfIsland][heightOfIsland];
-    }
-
-    public static ArrayList<BasicUnit>[][] fill(ArrayList<BasicUnit>[][] island) {
-        for (int i = 0; i < island.length; i++) {
-            for (int j = 0; j < island[i].length; j++) {
-                island[i][j] = new ArrayList<>();
-                //island[i][j].add(new Wolf());
+        for (int i = 0; i < LAND.length; i++) {
+            for (int j = 0; j < LAND[i].length; j++) {
+                LAND[i][j] =new Sector(i,j, wolves);
             }
         }
-        island[0][1].add(new Wolf());
-        return island;
+        return LAND;
+
     }
 
 

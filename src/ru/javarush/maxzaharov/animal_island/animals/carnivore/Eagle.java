@@ -9,6 +9,11 @@ public class Eagle extends Carnivorous {
     private double maxSatiety = 1;
     private double currentSatiety = 1;
 
+    public Eagle(int x, int y) {
+        super(x, y);
+    }
+
+
     @Override
     public int getSpeed() {
         return speed;

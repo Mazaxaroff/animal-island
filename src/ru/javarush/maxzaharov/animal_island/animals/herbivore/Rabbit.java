@@ -9,6 +9,11 @@ public class Rabbit extends Herbivorous {
     private double maxSatiety = 0.45;
     private double currentSatiety = 0.45;
 
+    public Rabbit(int x, int y) {
+        super(x, y);
+    }
+
+
     @Override
     public int getSpeed() {
         return speed;

@@ -9,6 +9,11 @@ public class Mouse extends Herbivorous {
     private double maxSatiety = 0.01;
     private double currentSatiety = 0.01;
 
+    public Mouse(int x, int y) {
+        super(x, y);
+    }
+
+
     @Override
     public int getSpeed() {
         return speed;

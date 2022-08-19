@@ -9,6 +9,11 @@ public class Bear extends Carnivorous {
     private double maxSatiety = 80;
     private double currentSatiety = 80;
 
+    public Bear(int x, int y) {
+        super(x, y);
+    }
+
+
     @Override
     public int getSpeed() {
         return speed;

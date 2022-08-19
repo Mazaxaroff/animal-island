@@ -9,6 +9,11 @@ public class Deer extends Herbivorous {
     private double maxSatiety = 50;
     private double currentSatiety = 50;
 
+    public Deer(int x, int y) {
+        super(x, y);
+    }
+
+
     @Override
     public int getSpeed() {
         return speed;

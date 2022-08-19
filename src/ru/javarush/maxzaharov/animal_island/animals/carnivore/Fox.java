@@ -9,6 +9,11 @@ public class Fox extends Carnivorous {
     private double maxSatiety = 2;
     private double currentSatiety = 2;
 
+    public Fox(int x, int y) {
+        super(x, y);
+    }
+
+
     @Override
     public int getSpeed() {
         return speed;

@@ -9,6 +9,11 @@ public class Sheep extends Herbivorous {
     private double maxSatiety = 15;
     private double currentSatiety = 15;
 
+    public Sheep(int x, int y) {
+        super(x, y);
+    }
+
+
     @Override
     public int getSpeed() {
         return speed;

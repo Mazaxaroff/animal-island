@@ -9,6 +9,11 @@ public class Boa extends Carnivorous {
     private double maxSatiety = 3;
     private double currentSatiety = 3;
 
+    public Boa(int x, int y) {
+        super(x, y);
+    }
+
+
     @Override
     public int getSpeed() {
         return speed;

@@ -1,5 +1,7 @@
 package ru.javarush.maxzaharov.animal_island.animals.abstracts;
 
+import ru.javarush.maxzaharov.animal_island.Sector;
+
 public abstract class Animal extends BasicUnit {
     private int speed;
     private int maxAnimalThisTypeOnTheField;
@@ -11,6 +13,12 @@ public abstract class Animal extends BasicUnit {
     private boolean isCanEat = true;
     private boolean isAlive = true;
 
+    public Animal(int x, int y, Sector sector) {
+        super(x, y);
+    }
+    public void move(){
+        System.out.println(this.x + " " + this.y + " -я здесь!");
+    }
     public int getSpeed() {
         return speed;
     }

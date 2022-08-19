@@ -9,6 +9,11 @@ public class Buffalo extends Herbivorous {
     private double maxSatiety = 100;
     private double currentSatiety = 100;
 
+    public Buffalo(int x, int y) {
+        super(x, y);
+    }
+
+
     @Override
     public int getSpeed() {
         return speed;

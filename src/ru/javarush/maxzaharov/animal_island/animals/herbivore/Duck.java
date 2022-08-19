@@ -9,6 +9,11 @@ public class Duck extends Herbivorous {
     private double maxSatiety = 0.15;
     private double currentSatiety = 0.15;
 
+    public Duck(int x, int y) {
+        super(x, y);
+    }
+
+
     @Override
     public int getSpeed() {
         return speed;
