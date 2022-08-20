@@ -16,7 +16,7 @@ public class Plant extends BasicUnit {
         this.weight = weight;
     }
 
-    public Plant(Sector sector) {
-        super(sector);
+    public Plant(int x, int y) {
+        super(x, y);
     }
 }

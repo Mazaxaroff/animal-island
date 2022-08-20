@@ -1,5 +1,6 @@
 package ru.javarush.maxzaharov.animal_island.animals.herbivore;
 
+import ru.javarush.maxzaharov.animal_island.Fauna;
 import ru.javarush.maxzaharov.animal_island.Sector;
 import ru.javarush.maxzaharov.animal_island.animals.abstracts.BasicUnit;
 import ru.javarush.maxzaharov.animal_island.animals.abstracts.Herbivorous;
@@ -12,10 +13,11 @@ public class Goat extends Herbivorous {
     private double weight = 60;
     private double maxSatiety = 10;
     private double currentSatiety = 10;
+    private String typeOfAnimal = String.valueOf(Fauna.GOAT);
 
 
-    public Goat(Sector sector) {
-        super(sector);
+    public Goat(int x, int y) {
+        super(x, y);
     }
 
     @Override

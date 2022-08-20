@@ -1,5 +1,6 @@
 package ru.javarush.maxzaharov.animal_island.animals.carnivore;
 
+import ru.javarush.maxzaharov.animal_island.Fauna;
 import ru.javarush.maxzaharov.animal_island.Sector;
 import ru.javarush.maxzaharov.animal_island.animals.abstracts.Carnivorous;
 
@@ -8,10 +9,12 @@ public class Eagle extends Carnivorous {
     private double weight = 6;
     private double maxSatiety = 1;
     private double currentSatiety = 1;
+    private String typeOfAnimal = String.valueOf(Fauna.EAGLE);
 
-    public Eagle(Sector sector) {
-        super(sector);
+    public Eagle(int x, int y) {
+        super(x, y);
     }
+
 
     @Override
     public int getSpeed() {

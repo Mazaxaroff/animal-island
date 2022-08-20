@@ -1,5 +1,6 @@
 package ru.javarush.maxzaharov.animal_island.animals.herbivore;
 
+import ru.javarush.maxzaharov.animal_island.Fauna;
 import ru.javarush.maxzaharov.animal_island.Sector;
 import ru.javarush.maxzaharov.animal_island.animals.abstracts.Herbivorous;
 
@@ -8,9 +9,10 @@ public class Deer extends Herbivorous {
     private double weight = 300;
     private double maxSatiety = 50;
     private double currentSatiety = 50;
+    private String typeOfAnimal = String.valueOf(Fauna.DEER);
 
-    public Deer(Sector sector) {
-        super(sector);
+    public Deer(int x, int y) {
+        super(x, y);
     }
 
     @Override

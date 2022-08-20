@@ -1,5 +1,6 @@
 package ru.javarush.maxzaharov.animal_island.animals.carnivore;
 
+import ru.javarush.maxzaharov.animal_island.Fauna;
 import ru.javarush.maxzaharov.animal_island.Sector;
 import ru.javarush.maxzaharov.animal_island.animals.abstracts.Carnivorous;
 
@@ -8,10 +9,12 @@ public class Wolf extends Carnivorous {
     private double weight = 50;
     private double maxSatiety = 8;
     private double currentSatiety = 8;
+    private String typeOfAnimal = String.valueOf(Fauna.WOLF);
 
-    public Wolf(Sector sector) {
-        super(sector);
+    public Wolf(int x, int y) {
+        super(x, y);
     }
+
 
     @Override
     public int getSpeed() {
@@ -53,10 +56,10 @@ public class Wolf extends Carnivorous {
         this.currentSatiety = currentSatiety;
     }
 
-    @Override
-    public void move() {
-        System.out.println(this.getSector().getX() + " " + this.getSector().getY() + " Это мои координаты");
-    }
+//    @Override
+//    public void move(Sector[][] island) {
+//        super.move(island);
+//    }
 }
 
 

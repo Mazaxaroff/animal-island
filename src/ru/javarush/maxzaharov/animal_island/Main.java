@@ -16,7 +16,16 @@ public class Main {
         //Arrays.stream(Island.create()).map(Arrays::toString).forEach(System.out::println);
        //System.out.println(firstSector.plants);
 
-        Arrays.stream(island).map(Arrays::toString).forEach(System.out::println);
+       //Arrays.stream(island).map(Arrays::toString).forEach(System.out::println);
+
+        //wolves.forEach(wolf -> System.out.println(wolf.getX()));
+
+       // wolves.forEach(wolf -> wolf.move());
+
+
+        System.out.println(wolves.get(1).getX() + " " + wolves.get(1).getY() + "Начальная позиция");
+        wolves.get(1).move(island);
+        System.out.println(wolves.get(1).getX() + " " + wolves.get(1).getY() + "конечная позиция");
 
 
     }

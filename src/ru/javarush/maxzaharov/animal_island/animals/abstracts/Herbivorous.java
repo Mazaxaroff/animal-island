@@ -5,7 +5,7 @@ import ru.javarush.maxzaharov.animal_island.Sector;
 public abstract class Herbivorous extends Animal{
 
 
-    public Herbivorous(Sector sector) {
-        super(sector);
+    public Herbivorous(int x, int y) {
+        super(x, y);
     }
 }

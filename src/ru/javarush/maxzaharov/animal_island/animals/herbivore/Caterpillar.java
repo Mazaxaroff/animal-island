@@ -1,5 +1,6 @@
 package ru.javarush.maxzaharov.animal_island.animals.herbivore;
 
+import ru.javarush.maxzaharov.animal_island.Fauna;
 import ru.javarush.maxzaharov.animal_island.Sector;
 import ru.javarush.maxzaharov.animal_island.animals.abstracts.Herbivorous;
 
@@ -8,10 +9,12 @@ public class Caterpillar extends Herbivorous {
     private double weight = 0.01;
     private double maxSatiety = 0;
     private double currentSatiety = 0;
+    private String typeOfAnimal = String.valueOf(Fauna.CATERPILLAR);
 
-    public Caterpillar(Sector sector) {
-        super(sector);
+    public Caterpillar(int x, int y) {
+        super(x, y);
     }
+
 
     @Override
     public int getSpeed() {

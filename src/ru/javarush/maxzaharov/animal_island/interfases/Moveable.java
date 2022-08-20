@@ -1,5 +1,7 @@
 package ru.javarush.maxzaharov.animal_island.interfases;
 
+import ru.javarush.maxzaharov.animal_island.Sector;
+
 public interface Moveable {
-    void move();
+    void move(Sector[][] island);
 }

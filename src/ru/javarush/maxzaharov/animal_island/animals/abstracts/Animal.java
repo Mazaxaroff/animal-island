@@ -1,9 +1,13 @@
 package ru.javarush.maxzaharov.animal_island.animals.abstracts;
 
+import ru.javarush.maxzaharov.animal_island.RandomNumber;
 import ru.javarush.maxzaharov.animal_island.interfases.Eatable;
 import ru.javarush.maxzaharov.animal_island.interfases.Fertile;
 import ru.javarush.maxzaharov.animal_island.interfases.Moveable;
 import ru.javarush.maxzaharov.animal_island.Sector;
+import ru.javarush.maxzaharov.animal_island.island.Island;
+
+import java.util.ArrayList;
 
 public abstract class Animal extends BasicUnit implements Moveable, Eatable, Fertile {
     private int speed;
@@ -14,9 +18,13 @@ public abstract class Animal extends BasicUnit implements Moveable, Eatable, Fer
     private boolean isCanMove = true;
     private boolean isCanEat = true;
     private boolean isAlive = true;
-    int x;
-    int y;
-    Sector sector;
+    private String typeOfAnimal;
+
+
+    public Animal(int x, int y) {
+        super(x, y);
+    }
+
 
     @Override
     public int getX() {
@@ -59,12 +67,33 @@ public abstract class Animal extends BasicUnit implements Moveable, Eatable, Fer
     }
 
     @Override
-    public void move() {
+    public void move(Sector[][] island) {
+
+        ArrayList<String> directions = new ArrayList<>();
+        System.out.println(getX() + " " + getY() + " Это мои координаты");
+        if (getX() > 0 && island[getX() - 1][getY()].checkFreeSpace(typeOfAnimal)) {
+            directions.add("Left");
+        }
+        if (getX() < Island.WIDTH_OF_ISLAND - 1 && island[getX() + 1][getY()].checkFreeSpace(typeOfAnimal)) {
+            directions.add("Right");
+        }
+        if (getY() > 0 && island[getX()][getY() - 1].checkFreeSpace(typeOfAnimal)) {
+            directions.add("Up");
+        }
+        if (getY() < Island.HEIGHT_OF_ISLAND - 1 && island[getX()][getY() + 1].checkFreeSpace(typeOfAnimal)) {
+            directions.add("Down");
+        }
+        int randomDirection = RandomNumber.get(directions.size());
+        String direction = directions.get(randomDirection);
+        switch (direction) {
+            case "Left" -> setX(x - 1);
+            case "Right" -> setX(x + 1);
+            case "Up" -> setY(y + 1);
+            case "Down" -> setY(y - 1);
         }
 
-    public Animal(Sector sector) {
-        super(sector);
     }
+
 
     public int getSpeed() {
         return speed;

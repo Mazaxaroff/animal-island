@@ -1,5 +1,6 @@
 package ru.javarush.maxzaharov.animal_island.animals.carnivore;
 
+import ru.javarush.maxzaharov.animal_island.Fauna;
 import ru.javarush.maxzaharov.animal_island.Sector;
 import ru.javarush.maxzaharov.animal_island.animals.abstracts.Carnivorous;
 
@@ -8,11 +9,12 @@ public class Bear extends Carnivorous {
     private double weight = 500;
     private double maxSatiety = 80;
     private double currentSatiety = 80;
+    private String typeOfAnimal = String.valueOf(Fauna.BEAR);
 
-
-    public Bear(Sector sector) {
-        super(sector);
+    public Bear(int x, int y) {
+        super(x, y);
     }
+
 
     @Override
     public int getSpeed() {
