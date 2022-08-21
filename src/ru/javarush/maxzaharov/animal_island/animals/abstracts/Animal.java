@@ -1,5 +1,6 @@
 package ru.javarush.maxzaharov.animal_island.animals.abstracts;
 
+import ru.javarush.maxzaharov.animal_island.Fauna;
 import ru.javarush.maxzaharov.animal_island.RandomNumber;
 import ru.javarush.maxzaharov.animal_island.interfases.Eatable;
 import ru.javarush.maxzaharov.animal_island.interfases.Fertile;
@@ -18,9 +19,9 @@ public abstract class Animal extends BasicUnit implements Moveable, Eatable, Fer
     private boolean isCanMove = true;
     private boolean isCanEat = true;
     private boolean isAlive = true;
-    private String typeOfAnimal;
+    Fauna typeOfAnimal;
 
-    public String getTypeOfAnimal() {
+    public Fauna getTypeOfAnimal() {
         return typeOfAnimal;
     }
 
@@ -87,7 +88,6 @@ public abstract class Animal extends BasicUnit implements Moveable, Eatable, Fer
             }
             int randomDirection = RandomNumber.get(directions.size());
             String direction = directions.get(randomDirection);
-            System.out.println(direction);
             switch (direction) {
                 case "Left" -> horizontalMovement(island, x, y, -1);
                 case "Right" -> horizontalMovement(island, x, y, 1);
@@ -96,15 +96,17 @@ public abstract class Animal extends BasicUnit implements Moveable, Eatable, Fer
             }
         }
     }
-    public void horizontalMovement(Sector[][] island, int x, int y, int shift){
-        island[x][y].changeCountOfAnimal(this.getTypeOfAnimal(),-1);
-        setX(x+shift);
-        island[x+shift][y].changeCountOfAnimal(this.getTypeOfAnimal(),1);
+
+    public void horizontalMovement(Sector[][] island, int x, int y, int shift) {
+        island[x][y].changeCountOfAnimal(this.getTypeOfAnimal(), -1);
+        setX(x + shift);
+        island[x + shift][y].changeCountOfAnimal(this.getTypeOfAnimal(), 1);
     }
-    public void verticalMovement(Sector[][] island, int x, int y, int shift){
-        island[x][y].changeCountOfAnimal(this.getTypeOfAnimal(),-1);
-        setY(y+shift);
-        island[x][y+shift].changeCountOfAnimal(this.getTypeOfAnimal(),1);
+
+    public void verticalMovement(Sector[][] island, int x, int y, int shift) {
+        island[x][y].changeCountOfAnimal(this.getTypeOfAnimal(), -1);
+        setY(y + shift);
+        island[x][y + shift].changeCountOfAnimal(this.getTypeOfAnimal(), 1);
     }
 
 

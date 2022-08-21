@@ -14,7 +14,7 @@ public class Island {
     public static final Sector[][] LAND = new Sector[WIDTH_OF_ISLAND][HEIGHT_OF_ISLAND];
 
 
-    public static Sector[][] create( HashMap<String, ArrayList<Animal>> populations){
+    public static Sector[][] create( HashMap<Fauna, ArrayList<Animal>> populations){
         for (int i = 0; i < LAND.length; i++) {
             for (int j = 0; j < LAND[i].length; j++) {
                 LAND[i][j] =new Sector(i,j, populations);

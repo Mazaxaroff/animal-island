@@ -9,8 +9,12 @@ public class Mouse extends Herbivorous {
     private double weight = 0.05;
     private double maxSatiety = 0.01;
     private double currentSatiety = 0.01;
-    private String typeOfAnimal = String.valueOf(Fauna.MOUSE);
+    Fauna typeOfAnimal = Fauna.MOUSE;
 
+    @Override
+    public Fauna getTypeOfAnimal() {
+        return typeOfAnimal;
+    }
 
     public Mouse(int x, int y) {
         super(x, y);

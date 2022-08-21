@@ -9,10 +9,15 @@ public class Eagle extends Carnivorous {
     private double weight = 6;
     private double maxSatiety = 1;
     private double currentSatiety = 1;
-    private String typeOfAnimal = String.valueOf(Fauna.EAGLE);
+   Fauna typeOfAnimal = Fauna.EAGLE;
 
     public Eagle(int x, int y) {
         super(x, y);
+    }
+
+    @Override
+    public Fauna getTypeOfAnimal() {
+        return typeOfAnimal;
     }
 
     @Override

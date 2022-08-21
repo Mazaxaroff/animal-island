@@ -9,10 +9,15 @@ public class Fox extends Carnivorous {
     private double weight = 8;
     private double maxSatiety = 2;
     private double currentSatiety = 2;
-    private String typeOfAnimal = String.valueOf(Fauna.FOX);
+    Fauna typeOfAnimal = Fauna.FOX;
 
     public Fox(int x, int y) {
         super(x, y);
+    }
+
+    @Override
+    public Fauna getTypeOfAnimal() {
+        return typeOfAnimal;
     }
 
     @Override

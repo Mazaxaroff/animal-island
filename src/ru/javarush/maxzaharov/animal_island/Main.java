@@ -7,25 +7,31 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        HashMap<String, ArrayList<Animal>> populations = new HashMap<>() {{
-            put(Fauna.WOLF.toString(), new ArrayList<>());
-            put(Fauna.RABBIT.toString(), new ArrayList<>());
+        HashMap<Fauna, ArrayList<Animal>> populations = new HashMap<>() {{
+            put(Fauna.WOLF, new ArrayList<>());
+            put(Fauna.RABBIT, new ArrayList<>());
+            put(Fauna.SHEEP, new ArrayList<>());
+
         }};
         Sector[][] island = Island.create(populations);
 
         Sector firstSector = island[0][0];
-        System.out.println(firstSector.currentCountsOfAnimal.get(Fauna.WOLF.toString()) + " волков");
-        System.out.println(firstSector.currentCountsOfAnimal.get(Fauna.RABBIT.toString()) + " кроликов");
+        System.out.println(firstSector.currentCountsOfAnimal.get(Fauna.WOLF) + " волков");
+        System.out.println(firstSector.currentCountsOfAnimal.get(Fauna.RABBIT) + " кроликов");
 
-        for (String type : populations.keySet()) {
-            populations.get(type).get(1).move(island);
+        for (Fauna type : populations.keySet()) {
+            System.out.println("В секторе " + firstSector.getX() + " " + firstSector.getY() +
+                    " было " + firstSector.currentCountsOfAnimal.get(type) + " " + type.toString());
         }
-//        for (String key : populations.keySet()) {
-//            populations.get(key).forEach(animals -> {for (Animal animal : animals) {
-//                animal.move(island);
-//            }});
-//
-//        }
+
+        for (Fauna type : populations.keySet()) {
+            populations.get(type).get(0).move(island);
+        }
+        for (Fauna type : populations.keySet()) {
+            System.out.println("В секторе " + firstSector.getX() + " " + firstSector.getY() +
+                    " стало " + firstSector.currentCountsOfAnimal.get(type) + " " + type.toString());
+        }
+
     }
 }
 //        System.out.println(wolves.get(130).getX() + " " + wolves.get(130).getY() + " Начальная позиция");

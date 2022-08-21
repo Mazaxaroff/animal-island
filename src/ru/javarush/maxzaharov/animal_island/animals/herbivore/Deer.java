@@ -9,7 +9,12 @@ public class Deer extends Herbivorous {
     private double weight = 300;
     private double maxSatiety = 50;
     private double currentSatiety = 50;
-    private String typeOfAnimal = String.valueOf(Fauna.DEER);
+    Fauna typeOfAnimal = Fauna.DEER;
+
+    @Override
+    public Fauna getTypeOfAnimal() {
+        return typeOfAnimal;
+    }
 
     public Deer(int x, int y) {
         super(x, y);

@@ -9,7 +9,12 @@ public class Duck extends Herbivorous {
     private double weight = 1;
     private double maxSatiety = 0.15;
     private double currentSatiety = 0.15;
-    private String typeOfAnimal = String.valueOf(Fauna.DUCK);
+   Fauna typeOfAnimal = Fauna.DUCK;
+
+    @Override
+    public Fauna getTypeOfAnimal() {
+        return typeOfAnimal;
+    }
 
     @Override
     public void move(Sector[][] island) {

@@ -1,8 +1,8 @@
 package ru.javarush.maxzaharov.animal_island;
 
 import ru.javarush.maxzaharov.animal_island.animals.abstracts.Animal;
-import ru.javarush.maxzaharov.animal_island.animals.carnivore.Wolf;
-import ru.javarush.maxzaharov.animal_island.animals.herbivore.Rabbit;
+import ru.javarush.maxzaharov.animal_island.animals.carnivore.*;
+import ru.javarush.maxzaharov.animal_island.animals.herbivore.*;
 import ru.javarush.maxzaharov.animal_island.plants.Plant;
 
 import java.util.ArrayList;
@@ -29,24 +29,24 @@ public class Sector {
     public static final int MAX_COUNT_OF_PLANTS = 200;
     public static int currentCountOfPlants;
 
-    HashMap<String, Integer> maxCountsOfAnimal = new HashMap<>() {{
-        put(Fauna.WOLF.toString(), MAX_COUNT_OF_WOLVES);
-        put(Fauna.FOX.toString(), MAX_COUNT_OF_FOXES);
-        put(Fauna.EAGLE.toString(), MAX_COUNT_OF_EAGLES);
-        put(Fauna.BOA.toString(), MAX_COUNT_OF_BOAS);
-        put(Fauna.BEAR.toString(), MAX_COUNT_OF_BEARS);
-        put(Fauna.BOAR.toString(), MAX_COUNT_OF_BOARS);
-        put(Fauna.BUFFALO.toString(), MAX_COUNT_OF_BUFFALOES);
-        put(Fauna.CATERPILLAR.toString(), MAX_COUNT_OF_CATERPILLARS);
-        put(Fauna.DEER.toString(), MAX_COUNT_OF_DEER);
-        put(Fauna.DUCK.toString(), MAX_COUNT_OF_DUCKS);
-        put(Fauna.GOAT.toString(), MAX_COUNT_OF_GOATS);
-        put(Fauna.HORSE.toString(), MAX_COUNT_OF_HORSES);
-        put(Fauna.MOUSE.toString(), MAX_COUNT_OF_MOUSES);
-        put(Fauna.RABBIT.toString(), MAX_COUNT_OF_RABBITS);
-        put(Fauna.SHEEP.toString(), MAX_COUNT_OF_SHEEP);
+    HashMap<Fauna, Integer> maxCountsOfAnimal = new HashMap<>() {{
+        put(Fauna.WOLF, MAX_COUNT_OF_WOLVES);
+        put(Fauna.FOX, MAX_COUNT_OF_FOXES);
+        put(Fauna.EAGLE, MAX_COUNT_OF_EAGLES);
+        put(Fauna.BOA, MAX_COUNT_OF_BOAS);
+        put(Fauna.BEAR, MAX_COUNT_OF_BEARS);
+        put(Fauna.BOAR, MAX_COUNT_OF_BOARS);
+        put(Fauna.BUFFALO, MAX_COUNT_OF_BUFFALOES);
+        put(Fauna.CATERPILLAR, MAX_COUNT_OF_CATERPILLARS);
+        put(Fauna.DEER, MAX_COUNT_OF_DEER);
+        put(Fauna.DUCK, MAX_COUNT_OF_DUCKS);
+        put(Fauna.GOAT, MAX_COUNT_OF_GOATS);
+        put(Fauna.HORSE, MAX_COUNT_OF_HORSES);
+        put(Fauna.MOUSE, MAX_COUNT_OF_MOUSES);
+        put(Fauna.RABBIT, MAX_COUNT_OF_RABBITS);
+        put(Fauna.SHEEP, MAX_COUNT_OF_SHEEP);
     }};
-    HashMap<String, Integer> currentCountsOfAnimal = new HashMap<>();
+    HashMap<Fauna, Integer> currentCountsOfAnimal = new HashMap<>();
 
     public int getX() {
         return x;
@@ -65,13 +65,16 @@ public class Sector {
     }
 
 
-
-    public Sector(int x, int y, HashMap<String, ArrayList<Animal>> populations) {
+    public Sector(int x, int y, HashMap<Fauna, ArrayList<Animal>> populations) {
         this.x = x;
         this.y = y;
         createPlant(this);
-        CreateAnimal(x, y, Fauna.WOLF.toString(), populations);
-        CreateAnimal(x, y, Fauna.RABBIT.toString(), populations);
+//        CreateAnimal(x, y, Fauna.WOLF, populations);
+//        CreateAnimal(x, y, Fauna.RABBIT, populations);
+        for (Fauna animal : Fauna.values()) {
+            CreateAnimal(x, y, animal, populations);
+
+        }
 
     }
 
@@ -79,23 +82,34 @@ public class Sector {
         currentCountOfPlants = RandomNumber.get(MAX_COUNT_OF_PLANTS);
     }
 
-    private void CreateAnimal(int x, int y, String typeOfAnimal, HashMap<String, ArrayList<Animal>> populations) {
+    private void CreateAnimal(int x, int y, Fauna typeOfAnimal, HashMap<Fauna, ArrayList<Animal>> populations) {
         currentCountsOfAnimal.put(typeOfAnimal, RandomNumber.get(maxCountsOfAnimal.get(typeOfAnimal)));
         for (int i = 0; i < currentCountsOfAnimal.get(typeOfAnimal); i++) {
-            if (typeOfAnimal.equals(Fauna.WOLF.toString())) {
-                populations.get(typeOfAnimal).add(new Wolf(x, y));
-            }
-            if (typeOfAnimal.equals(Fauna.RABBIT.toString())) {
-                populations.get(typeOfAnimal).add(new Rabbit(x, y));
+            switch (typeOfAnimal) {
+                case WOLF -> populations.get(typeOfAnimal).add(new Wolf(x, y));
+//                case BEAR -> populations.get(typeOfAnimal).add(new Bear(x, y));
+//                case BOA -> populations.get(typeOfAnimal).add(new Boa(x, y));
+//                case EAGLE -> populations.get(typeOfAnimal).add(new Eagle(x, y));
+//                case FOX -> populations.get(typeOfAnimal).add(new Fox(x, y));
+//                case BOAR -> populations.get(typeOfAnimal).add(new Boar(x, y));
+//                case BUFFALO -> populations.get(typeOfAnimal).add(new Buffalo(x, y));
+//                case CATERPILLAR -> populations.get(typeOfAnimal).add(new Caterpillar(x, y));
+//                case DEER -> populations.get(typeOfAnimal).add(new Deer(x, y));
+//                case DUCK -> populations.get(typeOfAnimal).add(new Duck(x, y));
+//                case GOAT -> populations.get(typeOfAnimal).add(new Goat(x, y));
+//                case HORSE -> populations.get(typeOfAnimal).add(new Horse(x, y));
+//                case MOUSE -> populations.get(typeOfAnimal).add(new Mouse(x, y));
+                case RABBIT -> populations.get(typeOfAnimal).add(new Rabbit(x, y));
+                case SHEEP -> populations.get(typeOfAnimal).add(new Sheep(x, y));
             }
         }
     }
 
-    public boolean checkFreeSpace(String typeOfAnimal) {
+    public boolean checkFreeSpace(Fauna typeOfAnimal) {
         return currentCountsOfAnimal.get(typeOfAnimal) < maxCountsOfAnimal.get(typeOfAnimal);
     }
 
-    public void changeCountOfAnimal(String typeOfAnimal, int different) {
+    public void changeCountOfAnimal(Fauna typeOfAnimal, int different) {
         currentCountsOfAnimal.
                 put(typeOfAnimal, currentCountsOfAnimal.get(typeOfAnimal) + different);
     }

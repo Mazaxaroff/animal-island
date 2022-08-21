@@ -9,10 +9,15 @@ public class Boa extends Carnivorous {
     private double weight = 15;
     private double maxSatiety = 3;
     private double currentSatiety = 3;
-    private String typeOfAnimal = String.valueOf(Fauna.BOA);
+    Fauna typeOfAnimal = Fauna.BOA;
 
     public Boa(int x, int y) {
         super(x, y);
+    }
+
+    @Override
+    public Fauna getTypeOfAnimal() {
+        return typeOfAnimal;
     }
 
     @Override

@@ -9,7 +9,12 @@ public class Buffalo extends Herbivorous {
     private double weight = 700;
     private double maxSatiety = 100;
     private double currentSatiety = 100;
-    private String typeOfAnimal = String.valueOf(Fauna.BUFFALO);
+    Fauna typeOfAnimal = Fauna.BUFFALO;
+
+    @Override
+    public Fauna getTypeOfAnimal() {
+        return typeOfAnimal;
+    }
 
     public Buffalo(int x, int y) {
         super(x, y);

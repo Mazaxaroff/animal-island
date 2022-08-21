@@ -13,7 +13,12 @@ public class Goat extends Herbivorous {
     private double weight = 60;
     private double maxSatiety = 10;
     private double currentSatiety = 10;
-    private String typeOfAnimal = String.valueOf(Fauna.GOAT);
+    Fauna typeOfAnimal = Fauna.GOAT;
+
+    @Override
+    public Fauna getTypeOfAnimal() {
+        return typeOfAnimal;
+    }
 
     @Override
     public void move(Sector[][] island) {

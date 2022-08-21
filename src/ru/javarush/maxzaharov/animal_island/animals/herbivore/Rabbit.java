@@ -9,7 +9,12 @@ public class Rabbit extends Herbivorous {
     private double weight = 2;
     private double maxSatiety = 0.45;
     private double currentSatiety = 0.45;
-    private String typeOfAnimal = String.valueOf(Fauna.RABBIT);
+    Fauna typeOfAnimal = Fauna.RABBIT;
+
+    @Override
+    public Fauna getTypeOfAnimal() {
+        return typeOfAnimal;
+    }
 
     @Override
     public void move(Sector[][] island) {

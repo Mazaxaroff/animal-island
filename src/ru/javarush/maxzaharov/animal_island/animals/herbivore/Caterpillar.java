@@ -9,7 +9,12 @@ public class Caterpillar extends Herbivorous {
     private double weight = 0.01;
     private double maxSatiety = 0;
     private double currentSatiety = 0;
-    private String typeOfAnimal = String.valueOf(Fauna.CATERPILLAR);
+   Fauna typeOfAnimal = Fauna.CATERPILLAR;
+
+    @Override
+    public Fauna getTypeOfAnimal() {
+        return typeOfAnimal;
+    }
 
     public Caterpillar(int x, int y) {
         super(x, y);

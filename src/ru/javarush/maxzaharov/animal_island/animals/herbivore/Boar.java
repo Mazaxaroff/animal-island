@@ -9,7 +9,12 @@ public class Boar extends Herbivorous {
     private double weight = 400;
     private double maxSatiety = 50;
     private double currentSatiety = 50;
-    private String typeOfAnimal = String.valueOf(Fauna.BOAR);
+    Fauna typeOfAnimal = Fauna.BOAR;
+
+    @Override
+    public Fauna getTypeOfAnimal() {
+        return typeOfAnimal;
+    }
 
     public Boar(int x, int y) {
         super(x, y);

@@ -9,10 +9,15 @@ public class Wolf extends Carnivorous {
     private double weight = 50;
     private double maxSatiety = 8;
     private double currentSatiety = 8;
-    private String typeOfAnimal = String.valueOf(Fauna.WOLF);
+    Fauna typeOfAnimal = Fauna.WOLF;
 
     public Wolf(int x, int y) {
         super(x, y);
+    }
+
+    @Override
+    public Fauna getTypeOfAnimal() {
+        return typeOfAnimal;
     }
 
     @Override
@@ -20,9 +25,6 @@ public class Wolf extends Carnivorous {
         super.move(island);
     }
 
-    public String getTypeOfAnimal() {
-        return typeOfAnimal;
-    }
 
     @Override
     public int getSpeed() {

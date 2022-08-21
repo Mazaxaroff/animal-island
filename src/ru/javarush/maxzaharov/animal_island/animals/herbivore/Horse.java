@@ -13,7 +13,12 @@ public class Horse extends Herbivorous {
     private double weight = 400;
     private double maxSatiety = 60;
     private double currentSatiety = 60;
-    private String typeOfAnimal = String.valueOf(Fauna.HORSE);
+    Fauna typeOfAnimal = Fauna.HORSE;
+
+    @Override
+    public Fauna getTypeOfAnimal() {
+        return typeOfAnimal;
+    }
 
     public Horse(int x, int y) {
         super(x, y);
