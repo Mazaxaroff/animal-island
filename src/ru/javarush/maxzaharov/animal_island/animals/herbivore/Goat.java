@@ -15,6 +15,10 @@ public class Goat extends Herbivorous {
     private double currentSatiety = 10;
     private String typeOfAnimal = String.valueOf(Fauna.GOAT);
 
+    @Override
+    public void move(Sector[][] island) {
+        super.move(island);
+    }
 
     public Goat(int x, int y) {
         super(x, y);

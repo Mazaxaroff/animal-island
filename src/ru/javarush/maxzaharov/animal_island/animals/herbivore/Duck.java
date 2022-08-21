@@ -11,6 +11,10 @@ public class Duck extends Herbivorous {
     private double currentSatiety = 0.15;
     private String typeOfAnimal = String.valueOf(Fauna.DUCK);
 
+    @Override
+    public void move(Sector[][] island) {
+        super.move(island);
+    }
 
     public Duck(int x, int y) {
         super(x, y);

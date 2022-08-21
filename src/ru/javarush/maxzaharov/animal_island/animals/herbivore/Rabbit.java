@@ -11,6 +11,11 @@ public class Rabbit extends Herbivorous {
     private double currentSatiety = 0.45;
     private String typeOfAnimal = String.valueOf(Fauna.RABBIT);
 
+    @Override
+    public void move(Sector[][] island) {
+        super.move(island);
+    }
+
     public Rabbit(int x, int y) {
         super(x, y);
     }

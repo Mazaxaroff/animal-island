@@ -17,6 +17,11 @@ public class Sheep extends Herbivorous {
     }
 
     @Override
+    public void move(Sector[][] island) {
+        super.move(island);
+    }
+
+    @Override
     public int getSpeed() {
         return speed;
     }

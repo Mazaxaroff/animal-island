@@ -1,32 +1,36 @@
 package ru.javarush.maxzaharov.animal_island;
 
 import ru.javarush.maxzaharov.animal_island.animals.abstracts.Animal;
-import ru.javarush.maxzaharov.animal_island.animals.carnivore.Wolf;
 import ru.javarush.maxzaharov.animal_island.island.Island;
 
 import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        ArrayList<Wolf> wolves = new ArrayList<>();
-        //[Fauna.WOLF, Fauna.DUCK] - все виды
-        //[Fauna.WOLF => wolves, Fauna.DUCK => ducks] - все виды
-        Sector[][] island = Island.create(wolves);
+        HashMap<String, ArrayList> populations = new HashMap<>() {{
+            put(Fauna.WOLF.toString(), new ArrayList<>());
+            put(Fauna.RABBIT.toString(), new ArrayList<>());
+        }};
+        Sector[][] island = Island.create(populations);
+
         Sector firstSector = island[0][0];
-        //Arrays.stream(Island.create()).map(Arrays::toString).forEach(System.out::println);
-       //System.out.println(firstSector.plants);
+        System.out.println(firstSector.currentCountsOfAnimal.get(Fauna.WOLF.toString()) + " волков");
+        System.out.println(firstSector.currentCountsOfAnimal.get(Fauna.RABBIT.toString()) + " кроликов");
 
-       //Arrays.stream(island).map(Arrays::toString).forEach(System.out::println);
-
-        //wolves.forEach(wolf -> System.out.println(wolf.getX()));
-
-       // wolves.forEach(wolf -> wolf.move());
-
-
-        System.out.println(wolves.get(1).getX() + " " + wolves.get(1).getY() + "Начальная позиция");
-        wolves.get(1).move(island);
-        System.out.println(wolves.get(1).getX() + " " + wolves.get(1).getY() + "конечная позиция");
-
-
+        for (String type : populations.keySet()) {
+            populations.get(type).get(1);
+        }
+//        for (String key : populations.keySet()) {
+//            populations.get(key).forEach(animals -> {for (Animal animal : animals) {
+//                animal.move(island);
+//            }});
+//
+//        }
     }
 }
+//        System.out.println(wolves.get(130).getX() + " " + wolves.get(130).getY() + " Начальная позиция");
+//        System.out.println("В секторе было " + firstSector.currentCountsOfAnimal.get(wolves.get(130).getTypeOfAnimal()) + " волков");
+//        wolves.get(130).move(island);
+//        System.out.println(wolves.get(130).getX() + " " + wolves.get(130).getY() + " конечная позиция");
+//        System.out.println("В секторе стало " + firstSector.currentCountsOfAnimal.get(wolves.get(130).getTypeOfAnimal()) + " волков");
+

@@ -15,6 +15,14 @@ public class Wolf extends Carnivorous {
         super(x, y);
     }
 
+    @Override
+    public void move(Sector[][] island) {
+        super.move(island);
+    }
+
+    public String getTypeOfAnimal() {
+        return typeOfAnimal;
+    }
 
     @Override
     public int getSpeed() {

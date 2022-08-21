@@ -15,6 +15,10 @@ public class Caterpillar extends Herbivorous {
         super(x, y);
     }
 
+    @Override
+    public void move(Sector[][] island) {
+        super.move(island);
+    }
 
     @Override
     public int getSpeed() {
