@@ -7,7 +7,7 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        HashMap<String, ArrayList> populations = new HashMap<>() {{
+        HashMap<String, ArrayList<Animal>> populations = new HashMap<>() {{
             put(Fauna.WOLF.toString(), new ArrayList<>());
             put(Fauna.RABBIT.toString(), new ArrayList<>());
         }};
@@ -18,7 +18,7 @@ public class Main {
         System.out.println(firstSector.currentCountsOfAnimal.get(Fauna.RABBIT.toString()) + " кроликов");
 
         for (String type : populations.keySet()) {
-            populations.get(type).get(1);
+            populations.get(type).get(1).move(island);
         }
 //        for (String key : populations.keySet()) {
 //            populations.get(key).forEach(animals -> {for (Animal animal : animals) {
