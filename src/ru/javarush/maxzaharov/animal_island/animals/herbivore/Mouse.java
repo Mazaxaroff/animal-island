@@ -1,18 +1,35 @@
 package ru.javarush.maxzaharov.animal_island.animals.herbivore;
 
-import ru.javarush.maxzaharov.animal_island.Fauna;
+import ru.javarush.maxzaharov.animal_island.FloraAndFauna;
 import ru.javarush.maxzaharov.animal_island.Sector;
 import ru.javarush.maxzaharov.animal_island.animals.abstracts.Herbivorous;
+
+import java.util.HashMap;
 
 public class Mouse extends Herbivorous {
     private int speed = 1;
     private double weight = 0.05;
     private double maxSatiety = 0.01;
     private double currentSatiety = 0.01;
-    Fauna typeOfAnimal = Fauna.MOUSE;
+    private String emoji = "\uD83D\uDC01";
+    FloraAndFauna typeOfAnimal = FloraAndFauna.MOUSE;
+    HashMap<FloraAndFauna, Integer> chanceToCatch = new HashMap<>() {{
+        put(FloraAndFauna.CATERPILLAR, 90);
+        //put(FloraAndFauna.PLANT, 100);
+    }};
 
     @Override
-    public Fauna getTypeOfAnimal() {
+    public String getEmoji() {
+        return emoji;
+    }
+
+    @Override
+    public HashMap<FloraAndFauna, Integer> getChanceToCatch() {
+        return chanceToCatch;
+    }
+
+    @Override
+    public FloraAndFauna getTypeOfAnimal() {
         return typeOfAnimal;
     }
 
@@ -31,28 +48,13 @@ public class Mouse extends Herbivorous {
     }
 
     @Override
-    public void setSpeed(int speed) {
-        this.speed = speed;
-    }
-
-    @Override
     public double getWeight() {
         return weight;
     }
 
     @Override
-    public void setWeight(double weight) {
-        this.weight = weight;
-    }
-
-    @Override
     public double getMaxSatiety() {
         return maxSatiety;
-    }
-
-    @Override
-    public void setMaxSatiety(double maxSatiety) {
-        this.maxSatiety = maxSatiety;
     }
 
     @Override

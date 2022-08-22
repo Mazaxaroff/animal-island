@@ -3,9 +3,9 @@ package ru.javarush.maxzaharov.animal_island.animals.abstracts;
 import ru.javarush.maxzaharov.animal_island.Sector;
 
 public class BasicUnit {
-int x;
-int y;
-Sector sector;
+    int x;
+    int y;
+    Sector sector;
 
     public BasicUnit(int x, int y) {
         this.x = x;

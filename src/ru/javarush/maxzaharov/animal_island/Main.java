@@ -7,27 +7,30 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        HashMap<Fauna, ArrayList<Animal>> populations = new HashMap<>() {{
-            put(Fauna.WOLF, new ArrayList<>());
-            put(Fauna.RABBIT, new ArrayList<>());
-            put(Fauna.SHEEP, new ArrayList<>());
-
+        HashMap<FloraAndFauna, ArrayList<Animal>> populations = new HashMap<>() {{
+            put(FloraAndFauna.WOLF, new ArrayList<>());
+            put(FloraAndFauna.RABBIT, new ArrayList<>());
+            put(FloraAndFauna.SHEEP, new ArrayList<>());
         }};
         Sector[][] island = Island.create(populations);
 
         Sector firstSector = island[0][0];
-        System.out.println(firstSector.currentCountsOfAnimal.get(Fauna.WOLF) + " волков");
-        System.out.println(firstSector.currentCountsOfAnimal.get(Fauna.RABBIT) + " кроликов");
+        System.out.println(firstSector.currentCountsOfAnimal.get(FloraAndFauna.WOLF) +
+                populations.get(FloraAndFauna.WOLF).get(0).getEmoji());
+        System.out.println(firstSector.currentCountsOfAnimal.get(FloraAndFauna.RABBIT) +
+                populations.get(FloraAndFauna.RABBIT).get(0).getEmoji());
+        System.out.println(firstSector.currentCountsOfAnimal.get(FloraAndFauna.SHEEP) +
+                populations.get(FloraAndFauna.SHEEP).get(0).getEmoji());
 
-        for (Fauna type : populations.keySet()) {
+        for (FloraAndFauna type : populations.keySet()) {
             System.out.println("В секторе " + firstSector.getX() + " " + firstSector.getY() +
                     " было " + firstSector.currentCountsOfAnimal.get(type) + " " + type.toString());
         }
 
-        for (Fauna type : populations.keySet()) {
+        for (FloraAndFauna type : populations.keySet()) {
             populations.get(type).get(0).move(island);
         }
-        for (Fauna type : populations.keySet()) {
+        for (FloraAndFauna type : populations.keySet()) {
             System.out.println("В секторе " + firstSector.getX() + " " + firstSector.getY() +
                     " стало " + firstSector.currentCountsOfAnimal.get(type) + " " + type.toString());
         }

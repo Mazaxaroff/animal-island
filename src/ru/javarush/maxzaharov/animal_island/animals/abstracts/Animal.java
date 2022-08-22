@@ -1,6 +1,6 @@
 package ru.javarush.maxzaharov.animal_island.animals.abstracts;
 
-import ru.javarush.maxzaharov.animal_island.Fauna;
+import ru.javarush.maxzaharov.animal_island.FloraAndFauna;
 import ru.javarush.maxzaharov.animal_island.RandomNumber;
 import ru.javarush.maxzaharov.animal_island.interfases.Eatable;
 import ru.javarush.maxzaharov.animal_island.interfases.Fertile;
@@ -9,6 +9,7 @@ import ru.javarush.maxzaharov.animal_island.Sector;
 import ru.javarush.maxzaharov.animal_island.island.Island;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public abstract class Animal extends BasicUnit implements Moveable, Eatable, Fertile {
     private int speed;
@@ -19,9 +20,19 @@ public abstract class Animal extends BasicUnit implements Moveable, Eatable, Fer
     private boolean isCanMove = true;
     private boolean isCanEat = true;
     private boolean isAlive = true;
-    Fauna typeOfAnimal;
+    private String emoji;
+    FloraAndFauna typeOfAnimal;
+    private HashMap<FloraAndFauna, Integer> chanceToCatch = new HashMap<>();
 
-    public Fauna getTypeOfAnimal() {
+    public String getEmoji() {
+        return emoji;
+    }
+
+    public HashMap<FloraAndFauna, Integer> getChanceToCatch() {
+        return chanceToCatch;
+    }
+
+    public FloraAndFauna getTypeOfAnimal() {
         return typeOfAnimal;
     }
 
@@ -114,24 +125,12 @@ public abstract class Animal extends BasicUnit implements Moveable, Eatable, Fer
         return speed;
     }
 
-    public void setSpeed(int speed) {
-        this.speed = speed;
-    }
-
     public double getWeight() {
         return weight;
     }
 
-    public void setWeight(double weight) {
-        this.weight = weight;
-    }
-
     public double getMaxSatiety() {
         return maxSatiety;
-    }
-
-    public void setMaxSatiety(double maxSatiety) {
-        this.maxSatiety = maxSatiety;
     }
 
     public double getCurrentSatiety() {
@@ -150,14 +149,6 @@ public abstract class Animal extends BasicUnit implements Moveable, Eatable, Fer
         isCanMultiply = canMultiply;
     }
 
-    public boolean isCanMove() {
-        return isCanMove;
-    }
-
-    public void setCanMove(boolean canMove) {
-        isCanMove = canMove;
-    }
-
     public boolean isCanEat() {
         return isCanEat;
     }
@@ -174,5 +165,3 @@ public abstract class Animal extends BasicUnit implements Moveable, Eatable, Fer
         isAlive = alive;
     }
 }
-
-

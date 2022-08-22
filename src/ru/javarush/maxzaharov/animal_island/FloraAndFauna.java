@@ -1,6 +1,6 @@
 package ru.javarush.maxzaharov.animal_island;
 
-public enum Fauna {
+public enum FloraAndFauna {
     BEAR,
     BOA,
     EAGLE,

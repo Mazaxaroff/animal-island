@@ -1,22 +1,47 @@
 package ru.javarush.maxzaharov.animal_island.animals.carnivore;
 
-import ru.javarush.maxzaharov.animal_island.Fauna;
+import ru.javarush.maxzaharov.animal_island.FloraAndFauna;
 import ru.javarush.maxzaharov.animal_island.Sector;
 import ru.javarush.maxzaharov.animal_island.animals.abstracts.Carnivorous;
+
+import java.util.HashMap;
 
 public class Wolf extends Carnivorous {
     private int speed = 3;
     private double weight = 50;
     private double maxSatiety = 8;
     private double currentSatiety = 8;
-    Fauna typeOfAnimal = Fauna.WOLF;
+    private String emoji = "\uD83D\uDC3A";
+    FloraAndFauna typeOfAnimal = FloraAndFauna.WOLF;
+    HashMap<FloraAndFauna, Integer> chanceToCatch = new HashMap<>() {{
+        put(FloraAndFauna.HORSE, 10);
+        put(FloraAndFauna.DEER, 15);
+        put(FloraAndFauna.RABBIT, 60);
+        put(FloraAndFauna.MOUSE, 80);
+        put(FloraAndFauna.GOAT, 60);
+        put(FloraAndFauna.SHEEP, 70);
+        put(FloraAndFauna.BOAR, 15);
+        put(FloraAndFauna.BUFFALO, 10);
+        put(FloraAndFauna.DUCK, 40);
+    }};
 
     public Wolf(int x, int y) {
         super(x, y);
+
     }
 
     @Override
-    public Fauna getTypeOfAnimal() {
+    public String getEmoji() {
+        return emoji;
+    }
+
+    @Override
+    public HashMap<FloraAndFauna, Integer> getChanceToCatch() {
+        return chanceToCatch;
+    }
+
+    @Override
+    public FloraAndFauna getTypeOfAnimal() {
         return typeOfAnimal;
     }
 
@@ -32,28 +57,13 @@ public class Wolf extends Carnivorous {
     }
 
     @Override
-    public void setSpeed(int speed) {
-        this.speed = speed;
-    }
-
-    @Override
     public double getWeight() {
         return weight;
     }
 
     @Override
-    public void setWeight(double weight) {
-        this.weight = weight;
-    }
-
-    @Override
     public double getMaxSatiety() {
         return maxSatiety;
-    }
-
-    @Override
-    public void setMaxSatiety(double maxSatiety) {
-        this.maxSatiety = maxSatiety;
     }
 
     @Override
@@ -66,13 +76,4 @@ public class Wolf extends Carnivorous {
         this.currentSatiety = currentSatiety;
     }
 
-//    @Override
-//    public void move(Sector[][] island) {
-//        super.move(island);
-//    }
 }
-
-
-
-
-

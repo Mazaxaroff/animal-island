@@ -1,10 +1,10 @@
 package ru.javarush.maxzaharov.animal_island;
 
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class RandomNumber {
     public static int get(int border){
-        Random random = new Random();
-        return random.nextInt(border);
+           return ThreadLocalRandom.current().nextInt(0, border);
     }
 }
