@@ -7,39 +7,54 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        HashMap<FloraAndFauna, ArrayList<Animal>> populations = new HashMap<>() {{
-            put(FloraAndFauna.WOLF, new ArrayList<>());
-            put(FloraAndFauna.RABBIT, new ArrayList<>());
-            put(FloraAndFauna.SHEEP, new ArrayList<>());
+        HashMap<Fauna, ArrayList<Animal>> populations = new HashMap<>() {{
+            for (Fauna typeOfAnimal : Fauna.values()) {
+                put(typeOfAnimal, new ArrayList<>());
+            }
         }};
         Sector[][] island = Island.create(populations);
 
         Sector firstSector = island[0][0];
-        System.out.println(firstSector.currentCountsOfAnimal.get(FloraAndFauna.WOLF) +
-                populations.get(FloraAndFauna.WOLF).get(0).getEmoji());
-        System.out.println(firstSector.currentCountsOfAnimal.get(FloraAndFauna.RABBIT) +
-                populations.get(FloraAndFauna.RABBIT).get(0).getEmoji());
-        System.out.println(firstSector.currentCountsOfAnimal.get(FloraAndFauna.SHEEP) +
-                populations.get(FloraAndFauna.SHEEP).get(0).getEmoji());
+//        for (Fauna typeOfAnimal : Fauna.values()) {
+//            System.out.println(firstSector.currentCountsOfAnimal.get(typeOfAnimal) +
+//                    populations.get(typeOfAnimal).get(0).getEmoji());
+//        }
 
-        for (FloraAndFauna type : populations.keySet()) {
-            System.out.println("В секторе " + firstSector.getX() + " " + firstSector.getY() +
-                    " было " + firstSector.currentCountsOfAnimal.get(type) + " " + type.toString());
+//        for (Fauna typeOfAnimal : populations.keySet()) {
+//            System.out.println("В секторе " + firstSector.getX() + " " + firstSector.getY() +
+//                    " было " + firstSector.currentCountsOfAnimal.get(typeOfAnimal) + " " + typeOfAnimal.toString());
+//        }
+//        for (Fauna typeOfAnimal : populations.keySet()) {
+        //fixme if (animal.alive):
+        //fixme eat
+        //fixme multyply
+//            populations.get(typeOfAnimal).get(0).move(island);
+//        }
+//        for (Fauna typeOfAnimal : populations.keySet()) {
+//            System.out.println("В секторе " + firstSector.getX() + " " + firstSector.getY() +
+//                    " стало " + firstSector.currentCountsOfAnimal.get(typeOfAnimal) + " " + typeOfAnimal.toString());
+//        }
+
+        System.out.println("В секторе " + firstSector.getX() + " " + firstSector.getY() + " " +
+                firstSector.currentCountOfPlants + " травы");
+
+
+        for (Fauna type : Fauna.values()) {
+            System.out.println(populations.get(type).get(0).getTypeOfAnimal().toString() +
+                    " живо? = " + populations.get(type).get(0).isAlive());
+        }
+            for (Fauna typeOfAnimal : populations.keySet()) {
+                populations.get(typeOfAnimal).get(0).die(island);
+            }
+
+        for (Fauna type : Fauna.values()) {
+            System.out.println(populations.get(type).get(0).getTypeOfAnimal().toString() +
+                    " живо? = " +populations.get(type).get(0).isAlive());
+
         }
 
-        for (FloraAndFauna type : populations.keySet()) {
-            populations.get(type).get(0).move(island);
-        }
-        for (FloraAndFauna type : populations.keySet()) {
-            System.out.println("В секторе " + firstSector.getX() + " " + firstSector.getY() +
-                    " стало " + firstSector.currentCountsOfAnimal.get(type) + " " + type.toString());
-        }
+
 
     }
 }
-//        System.out.println(wolves.get(130).getX() + " " + wolves.get(130).getY() + " Начальная позиция");
-//        System.out.println("В секторе было " + firstSector.currentCountsOfAnimal.get(wolves.get(130).getTypeOfAnimal()) + " волков");
-//        wolves.get(130).move(island);
-//        System.out.println(wolves.get(130).getX() + " " + wolves.get(130).getY() + " конечная позиция");
-//        System.out.println("В секторе стало " + firstSector.currentCountsOfAnimal.get(wolves.get(130).getTypeOfAnimal()) + " волков");
 

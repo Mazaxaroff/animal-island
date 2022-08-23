@@ -1,6 +1,6 @@
 package ru.javarush.maxzaharov.animal_island.animals.herbivore;
 
-import ru.javarush.maxzaharov.animal_island.FloraAndFauna;
+import ru.javarush.maxzaharov.animal_island.Fauna;
 import ru.javarush.maxzaharov.animal_island.Sector;
 import ru.javarush.maxzaharov.animal_island.animals.abstracts.Herbivorous;
 
@@ -12,8 +12,8 @@ public class Rabbit extends Herbivorous {
     private double maxSatiety = 0.45;
     private double currentSatiety = 0.45;
     private String emoji = "\uD83D\uDC07";
-    FloraAndFauna typeOfAnimal = FloraAndFauna.RABBIT;
-    HashMap<FloraAndFauna, Integer> chanceToCatch = new HashMap<>() {{
+    Fauna typeOfAnimal = Fauna.RABBIT;
+    HashMap<Fauna, Integer> chanceToCatch = new HashMap<>() {{
         // put(FloraAndFauna.PLANT,100);
     }};
 
@@ -23,12 +23,12 @@ public class Rabbit extends Herbivorous {
     }
 
     @Override
-    public HashMap<FloraAndFauna, Integer> getChanceToCatch() {
+    public HashMap<Fauna, Integer> getChanceToCatch() {
         return chanceToCatch;
     }
 
     @Override
-    public FloraAndFauna getTypeOfAnimal() {
+    public Fauna getTypeOfAnimal() {
         return typeOfAnimal;
     }
 
@@ -36,6 +36,8 @@ public class Rabbit extends Herbivorous {
     public void move(Sector[][] island) {
         super.move(island);
     }
+
+   
 
     public Rabbit(int x, int y) {
         super(x, y);

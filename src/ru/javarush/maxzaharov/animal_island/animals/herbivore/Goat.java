@@ -1,6 +1,6 @@
 package ru.javarush.maxzaharov.animal_island.animals.herbivore;
 
-import ru.javarush.maxzaharov.animal_island.FloraAndFauna;
+import ru.javarush.maxzaharov.animal_island.Fauna;
 import ru.javarush.maxzaharov.animal_island.Sector;
 import ru.javarush.maxzaharov.animal_island.animals.abstracts.Herbivorous;
 
@@ -13,8 +13,8 @@ public class Goat extends Herbivorous {
     private double maxSatiety = 10;
     private double currentSatiety = 10;
     private String emoji = "\uD83D\uDC10";
-    FloraAndFauna typeOfAnimal = FloraAndFauna.GOAT;
-    HashMap<FloraAndFauna, Integer> chanceToCatch = new HashMap<>() {{
+    Fauna typeOfAnimal = Fauna.GOAT;
+    HashMap<Fauna, Integer> chanceToCatch = new HashMap<>() {{
         // put(FloraAndFauna.PLANT,100);
     }};
 
@@ -24,12 +24,12 @@ public class Goat extends Herbivorous {
     }
 
     @Override
-    public HashMap<FloraAndFauna, Integer> getChanceToCatch() {
+    public HashMap<Fauna, Integer> getChanceToCatch() {
         return chanceToCatch;
     }
 
     @Override
-    public FloraAndFauna getTypeOfAnimal() {
+    public Fauna getTypeOfAnimal() {
         return typeOfAnimal;
     }
 
@@ -37,6 +37,8 @@ public class Goat extends Herbivorous {
     public void move(Sector[][] island) {
         super.move(island);
     }
+
+   
 
     public Goat(int x, int y) {
         super(x, y);

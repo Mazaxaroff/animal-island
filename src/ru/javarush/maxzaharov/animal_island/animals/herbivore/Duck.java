@@ -1,6 +1,6 @@
 package ru.javarush.maxzaharov.animal_island.animals.herbivore;
 
-import ru.javarush.maxzaharov.animal_island.FloraAndFauna;
+import ru.javarush.maxzaharov.animal_island.Fauna;
 import ru.javarush.maxzaharov.animal_island.Sector;
 import ru.javarush.maxzaharov.animal_island.animals.abstracts.Herbivorous;
 
@@ -12,9 +12,9 @@ public class Duck extends Herbivorous {
     private double maxSatiety = 0.15;
     private double currentSatiety = 0.15;
     private String emoji = "\uD83E\uDD86";
-    FloraAndFauna typeOfAnimal = FloraAndFauna.DUCK;
-    HashMap<FloraAndFauna, Integer> chanceToCatch = new HashMap<>() {{
-        put(FloraAndFauna.CATERPILLAR, 90);
+    Fauna typeOfAnimal = Fauna.DUCK;
+    HashMap<Fauna, Integer> chanceToCatch = new HashMap<>() {{
+        put(Fauna.CATERPILLAR, 90);
         // put(FloraAndFauna.PLANT,100);
     }};
 
@@ -24,12 +24,12 @@ public class Duck extends Herbivorous {
     }
 
     @Override
-    public HashMap<FloraAndFauna, Integer> getChanceToCatch() {
+    public HashMap<Fauna, Integer> getChanceToCatch() {
         return chanceToCatch;
     }
 
     @Override
-    public FloraAndFauna getTypeOfAnimal() {
+    public Fauna getTypeOfAnimal() {
         return typeOfAnimal;
     }
 

@@ -28,24 +28,24 @@ public class Sector {
     public static final int MAX_COUNT_OF_PLANTS = 200;
     public static int currentCountOfPlants;
 
-    HashMap<FloraAndFauna, Integer> maxCountsOfAnimal = new HashMap<>() {{
-        put(FloraAndFauna.WOLF, MAX_COUNT_OF_WOLVES);
-        put(FloraAndFauna.FOX, MAX_COUNT_OF_FOXES);
-        put(FloraAndFauna.EAGLE, MAX_COUNT_OF_EAGLES);
-        put(FloraAndFauna.BOA, MAX_COUNT_OF_BOAS);
-        put(FloraAndFauna.BEAR, MAX_COUNT_OF_BEARS);
-        put(FloraAndFauna.BOAR, MAX_COUNT_OF_BOARS);
-        put(FloraAndFauna.BUFFALO, MAX_COUNT_OF_BUFFALOES);
-        put(FloraAndFauna.CATERPILLAR, MAX_COUNT_OF_CATERPILLARS);
-        put(FloraAndFauna.DEER, MAX_COUNT_OF_DEER);
-        put(FloraAndFauna.DUCK, MAX_COUNT_OF_DUCKS);
-        put(FloraAndFauna.GOAT, MAX_COUNT_OF_GOATS);
-        put(FloraAndFauna.HORSE, MAX_COUNT_OF_HORSES);
-        put(FloraAndFauna.MOUSE, MAX_COUNT_OF_MOUSES);
-        put(FloraAndFauna.RABBIT, MAX_COUNT_OF_RABBITS);
-        put(FloraAndFauna.SHEEP, MAX_COUNT_OF_SHEEP);
+    HashMap<Fauna, Integer> maxCountsOfAnimal = new HashMap<>() {{
+        put(Fauna.WOLF, MAX_COUNT_OF_WOLVES);
+        put(Fauna.FOX, MAX_COUNT_OF_FOXES);
+        put(Fauna.EAGLE, MAX_COUNT_OF_EAGLES);
+        put(Fauna.BOA, MAX_COUNT_OF_BOAS);
+        put(Fauna.BEAR, MAX_COUNT_OF_BEARS);
+        put(Fauna.BOAR, MAX_COUNT_OF_BOARS);
+        put(Fauna.BUFFALO, MAX_COUNT_OF_BUFFALOES);
+        put(Fauna.CATERPILLAR, MAX_COUNT_OF_CATERPILLARS);
+        put(Fauna.DEER, MAX_COUNT_OF_DEER);
+        put(Fauna.DUCK, MAX_COUNT_OF_DUCKS);
+        put(Fauna.GOAT, MAX_COUNT_OF_GOATS);
+        put(Fauna.HORSE, MAX_COUNT_OF_HORSES);
+        put(Fauna.MOUSE, MAX_COUNT_OF_MOUSES);
+        put(Fauna.RABBIT, MAX_COUNT_OF_RABBITS);
+        put(Fauna.SHEEP, MAX_COUNT_OF_SHEEP);
     }};
-    HashMap<FloraAndFauna, Integer> currentCountsOfAnimal = new HashMap<>();
+    HashMap<Fauna, Integer> currentCountsOfAnimal = new HashMap<>();
 
     public int getX() {
         return x;
@@ -64,50 +64,47 @@ public class Sector {
     }
 
 
-    public Sector(int x, int y, HashMap<FloraAndFauna, ArrayList<Animal>> populations) {
+    public Sector(int x, int y, HashMap<Fauna, ArrayList<Animal>> populations) {
         this.x = x;
         this.y = y;
-        createPlant(this);
-//        CreateAnimal(x, y, Fauna.WOLF, populations);
-//        CreateAnimal(x, y, Fauna.RABBIT, populations);
-        for (FloraAndFauna animal : FloraAndFauna.values()) {
+        createPlant(); //todo вынести в класс День и вызывать в начале дня
+        for (Fauna animal : Fauna.values()) {
             CreateAnimal(x, y, animal, populations);
-
         }
     }
 
-    private void createPlant(Sector sector) {
+    private void createPlant() {
         currentCountOfPlants = RandomNumber.get(MAX_COUNT_OF_PLANTS);
     }
 
-    private void CreateAnimal(int x, int y, FloraAndFauna typeOfAnimal, HashMap<FloraAndFauna, ArrayList<Animal>> populations) {
+    private void CreateAnimal(int x, int y, Fauna typeOfAnimal, HashMap<Fauna, ArrayList<Animal>> populations) {
         currentCountsOfAnimal.put(typeOfAnimal, RandomNumber.get(maxCountsOfAnimal.get(typeOfAnimal)));
         for (int i = 0; i < currentCountsOfAnimal.get(typeOfAnimal); i++) {
             switch (typeOfAnimal) {
                 case WOLF -> populations.get(typeOfAnimal).add(new Wolf(x, y));
-//                case BEAR -> populations.get(typeOfAnimal).add(new Bear(x, y));
-//                case BOA -> populations.get(typeOfAnimal).add(new Boa(x, y));
-//                case EAGLE -> populations.get(typeOfAnimal).add(new Eagle(x, y));
-//                case FOX -> populations.get(typeOfAnimal).add(new Fox(x, y));
-//                case BOAR -> populations.get(typeOfAnimal).add(new Boar(x, y));
-//                case BUFFALO -> populations.get(typeOfAnimal).add(new Buffalo(x, y));
-//                case CATERPILLAR -> populations.get(typeOfAnimal).add(new Caterpillar(x, y));
-//                case DEER -> populations.get(typeOfAnimal).add(new Deer(x, y));
-//                case DUCK -> populations.get(typeOfAnimal).add(new Duck(x, y));
-//                case GOAT -> populations.get(typeOfAnimal).add(new Goat(x, y));
-//                case HORSE -> populations.get(typeOfAnimal).add(new Horse(x, y));
-//                case MOUSE -> populations.get(typeOfAnimal).add(new Mouse(x, y));
+                case BEAR -> populations.get(typeOfAnimal).add(new Bear(x, y));
+                case BOA -> populations.get(typeOfAnimal).add(new Boa(x, y));
+                case EAGLE -> populations.get(typeOfAnimal).add(new Eagle(x, y));
+                case FOX -> populations.get(typeOfAnimal).add(new Fox(x, y));
+                case BOAR -> populations.get(typeOfAnimal).add(new Boar(x, y));
+                case BUFFALO -> populations.get(typeOfAnimal).add(new Buffalo(x, y));
+                case CATERPILLAR -> populations.get(typeOfAnimal).add(new Caterpillar(x, y));
+                case DEER -> populations.get(typeOfAnimal).add(new Deer(x, y));
+                case DUCK -> populations.get(typeOfAnimal).add(new Duck(x, y));
+                case GOAT -> populations.get(typeOfAnimal).add(new Goat(x, y));
+                case HORSE -> populations.get(typeOfAnimal).add(new Horse(x, y));
+                case MOUSE -> populations.get(typeOfAnimal).add(new Mouse(x, y));
                 case RABBIT -> populations.get(typeOfAnimal).add(new Rabbit(x, y));
                 case SHEEP -> populations.get(typeOfAnimal).add(new Sheep(x, y));
             }
         }
     }
 
-    public boolean checkFreeSpace(FloraAndFauna typeOfAnimal) {
+    public boolean checkFreeSpace(Fauna typeOfAnimal) {
         return currentCountsOfAnimal.get(typeOfAnimal) < maxCountsOfAnimal.get(typeOfAnimal);
     }
 
-    public void changeCountOfAnimal(FloraAndFauna typeOfAnimal, int different) {
+    public void changeCountOfAnimal(Fauna typeOfAnimal, int different) {
         currentCountsOfAnimal.
                 put(typeOfAnimal, currentCountsOfAnimal.get(typeOfAnimal) + different);
     }

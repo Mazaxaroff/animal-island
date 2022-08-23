@@ -1,6 +1,6 @@
 package ru.javarush.maxzaharov.animal_island.animals.carnivore;
 
-import ru.javarush.maxzaharov.animal_island.FloraAndFauna;
+import ru.javarush.maxzaharov.animal_island.Fauna;
 import ru.javarush.maxzaharov.animal_island.Sector;
 import ru.javarush.maxzaharov.animal_island.animals.abstracts.Carnivorous;
 
@@ -12,12 +12,12 @@ public class Boa extends Carnivorous {
     private double maxSatiety = 3;
     private double currentSatiety = 3;
     private String emoji = "\uD83D\uDC0D";
-    FloraAndFauna typeOfAnimal = FloraAndFauna.BOA;
-    HashMap<FloraAndFauna, Integer> chanceToCatch = new HashMap<>() {{
-        put(FloraAndFauna.FOX, 15);
-        put(FloraAndFauna.RABBIT, 20);
-        put(FloraAndFauna.MOUSE, 40);
-        put(FloraAndFauna.DUCK, 10);
+    Fauna typeOfAnimal = Fauna.BOA;
+    HashMap<Fauna, Integer> chanceToCatch = new HashMap<>() {{
+        put(Fauna.FOX, 15);
+        put(Fauna.RABBIT, 20);
+        put(Fauna.MOUSE, 40);
+        put(Fauna.DUCK, 10);
     }};
 
     public Boa(int x, int y) {
@@ -30,12 +30,12 @@ public class Boa extends Carnivorous {
     }
 
     @Override
-    public HashMap<FloraAndFauna, Integer> getChanceToCatch() {
+    public HashMap<Fauna, Integer> getChanceToCatch() {
         return chanceToCatch;
     }
 
     @Override
-    public FloraAndFauna getTypeOfAnimal() {
+    public Fauna getTypeOfAnimal() {
         return typeOfAnimal;
     }
 
@@ -44,7 +44,7 @@ public class Boa extends Carnivorous {
         super.move(island);
     }
 
-    @Override
+      @Override
     public int getSpeed() {
         return speed;
     }

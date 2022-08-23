@@ -1,17 +1,15 @@
 package ru.javarush.maxzaharov.animal_island.animals.abstracts;
 
-import ru.javarush.maxzaharov.animal_island.FloraAndFauna;
+import ru.javarush.maxzaharov.animal_island.Fauna;
 import ru.javarush.maxzaharov.animal_island.RandomNumber;
-import ru.javarush.maxzaharov.animal_island.interfases.Eatable;
-import ru.javarush.maxzaharov.animal_island.interfases.Fertile;
-import ru.javarush.maxzaharov.animal_island.interfases.Moveable;
+import ru.javarush.maxzaharov.animal_island.interfases.*;
 import ru.javarush.maxzaharov.animal_island.Sector;
 import ru.javarush.maxzaharov.animal_island.island.Island;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public abstract class Animal extends BasicUnit implements Moveable, Eatable, Fertile {
+public abstract class Animal extends BasicUnit implements Moveable, Eatable, Fertile, Hunger, Die {
     private int speed;
     private double weight;
     private double maxSatiety;
@@ -21,18 +19,18 @@ public abstract class Animal extends BasicUnit implements Moveable, Eatable, Fer
     private boolean isCanEat = true;
     private boolean isAlive = true;
     private String emoji;
-    FloraAndFauna typeOfAnimal;
-    private HashMap<FloraAndFauna, Integer> chanceToCatch = new HashMap<>();
+    Fauna typeOfAnimal;
+    private HashMap<Fauna, Integer> chanceToCatch = new HashMap<>();
 
     public String getEmoji() {
         return emoji;
     }
 
-    public HashMap<FloraAndFauna, Integer> getChanceToCatch() {
+    public HashMap<Fauna, Integer> getChanceToCatch() {
         return chanceToCatch;
     }
 
-    public FloraAndFauna getTypeOfAnimal() {
+    public Fauna getTypeOfAnimal() {
         return typeOfAnimal;
     }
 
@@ -40,6 +38,13 @@ public abstract class Animal extends BasicUnit implements Moveable, Eatable, Fer
         super(x, y);
     }
 
+    public boolean isCanMove() {
+        return isCanMove;
+    }
+
+    public void setCanMove(boolean canMove) {
+        isCanMove = canMove;
+    }
 
     @Override
     public int getX() {
@@ -72,13 +77,25 @@ public abstract class Animal extends BasicUnit implements Moveable, Eatable, Fer
     }
 
     @Override
-    public void eat() {
+    public void hunger(Sector[][] island) {
+        this.setCurrentSatiety(this.getCurrentSatiety() - (this.getMaxSatiety() / 5.0));
+        die(island);
+    }
+
+    @Override
+    public void eat(Sector[][] island) {
 
     }
 
     @Override
     public void reproduction() {
 
+    }
+
+    @Override
+    public void die(Sector[][] island) {
+            this.setAlive(false);
+            island[getX()][getY()].changeCountOfAnimal(this.getTypeOfAnimal(),-1);
     }
 
     @Override

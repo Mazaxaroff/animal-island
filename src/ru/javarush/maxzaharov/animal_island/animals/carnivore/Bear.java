@@ -1,6 +1,6 @@
 package ru.javarush.maxzaharov.animal_island.animals.carnivore;
 
-import ru.javarush.maxzaharov.animal_island.FloraAndFauna;
+import ru.javarush.maxzaharov.animal_island.Fauna;
 import ru.javarush.maxzaharov.animal_island.Sector;
 import ru.javarush.maxzaharov.animal_island.animals.abstracts.Carnivorous;
 
@@ -12,18 +12,18 @@ public class Bear extends Carnivorous {
     private double maxSatiety = 80;
     private double currentSatiety = 80;
     private String emoji = "\uD83D\uDC3B";
-    FloraAndFauna typeOfAnimal = FloraAndFauna.BEAR;
-    HashMap<FloraAndFauna, Integer> chanceToCatch = new HashMap<>() {{
-        put(FloraAndFauna.BOA, 80);
-        put(FloraAndFauna.HORSE, 40);
-        put(FloraAndFauna.DEER, 80);
-        put(FloraAndFauna.RABBIT, 80);
-        put(FloraAndFauna.MOUSE, 90);
-        put(FloraAndFauna.GOAT, 70);
-        put(FloraAndFauna.SHEEP, 70);
-        put(FloraAndFauna.BOAR, 50);
-        put(FloraAndFauna.BUFFALO, 20);
-        put(FloraAndFauna.DUCK, 10);
+    Fauna typeOfAnimal = Fauna.BEAR;
+    HashMap<Fauna, Integer> chanceToCatch = new HashMap<>() {{
+        put(Fauna.BOA, 80);
+        put(Fauna.HORSE, 40);
+        put(Fauna.DEER, 80);
+        put(Fauna.RABBIT, 80);
+        put(Fauna.MOUSE, 90);
+        put(Fauna.GOAT, 70);
+        put(Fauna.SHEEP, 70);
+        put(Fauna.BOAR, 50);
+        put(Fauna.BUFFALO, 20);
+        put(Fauna.DUCK, 10);
     }};
 
     @Override
@@ -32,12 +32,12 @@ public class Bear extends Carnivorous {
     }
 
     @Override
-    public HashMap<FloraAndFauna, Integer> getChanceToCatch() {
+    public HashMap<Fauna, Integer> getChanceToCatch() {
         return chanceToCatch;
     }
 
     @Override
-    public FloraAndFauna getTypeOfAnimal() {
+    public Fauna getTypeOfAnimal() {
         return typeOfAnimal;
     }
 
@@ -49,6 +49,7 @@ public class Bear extends Carnivorous {
     public void move(Sector[][] island) {
         super.move(island);
     }
+
 
     @Override
     public int getSpeed() {

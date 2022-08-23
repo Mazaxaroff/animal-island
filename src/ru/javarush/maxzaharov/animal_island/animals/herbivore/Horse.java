@@ -1,6 +1,6 @@
 package ru.javarush.maxzaharov.animal_island.animals.herbivore;
 
-import ru.javarush.maxzaharov.animal_island.FloraAndFauna;
+import ru.javarush.maxzaharov.animal_island.Fauna;
 import ru.javarush.maxzaharov.animal_island.Sector;
 import ru.javarush.maxzaharov.animal_island.animals.abstracts.Herbivorous;
 
@@ -13,8 +13,8 @@ public class Horse extends Herbivorous {
     private double maxSatiety = 60;
     private double currentSatiety = 60;
     private String emoji = "\uD83D\uDC0E";
-    FloraAndFauna typeOfAnimal = FloraAndFauna.HORSE;
-    HashMap<FloraAndFauna, Integer> chanceToCatch = new HashMap<>() {{
+    Fauna typeOfAnimal = Fauna.HORSE;
+    HashMap<Fauna, Integer> chanceToCatch = new HashMap<>() {{
         // put(FloraAndFauna.PLANT,100);
     }};
 
@@ -24,12 +24,12 @@ public class Horse extends Herbivorous {
     }
 
     @Override
-    public HashMap<FloraAndFauna, Integer> getChanceToCatch() {
+    public HashMap<Fauna, Integer> getChanceToCatch() {
         return chanceToCatch;
     }
 
     @Override
-    public FloraAndFauna getTypeOfAnimal() {
+    public Fauna getTypeOfAnimal() {
         return typeOfAnimal;
     }
 
@@ -41,6 +41,8 @@ public class Horse extends Herbivorous {
     public void move(Sector[][] island) {
         super.move(island);
     }
+
+   
 
     @Override
     public int getSpeed() {

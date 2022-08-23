@@ -1,6 +1,6 @@
 package ru.javarush.maxzaharov.animal_island.animals.carnivore;
 
-import ru.javarush.maxzaharov.animal_island.FloraAndFauna;
+import ru.javarush.maxzaharov.animal_island.Fauna;
 import ru.javarush.maxzaharov.animal_island.Sector;
 import ru.javarush.maxzaharov.animal_island.animals.abstracts.Carnivorous;
 
@@ -12,12 +12,12 @@ public class Eagle extends Carnivorous {
     private double maxSatiety = 1;
     private double currentSatiety = 1;
     private String emoji = "\uD83E\uDD85";
-    FloraAndFauna typeOfAnimal = FloraAndFauna.EAGLE;
-    HashMap<FloraAndFauna, Integer> chanceToCatch = new HashMap<>() {{
-        put(FloraAndFauna.FOX, 10);
-        put(FloraAndFauna.RABBIT, 90);
-        put(FloraAndFauna.MOUSE, 90);
-        put(FloraAndFauna.DUCK, 80);
+    Fauna typeOfAnimal = Fauna.EAGLE;
+    HashMap<Fauna, Integer> chanceToCatch = new HashMap<>() {{
+        put(Fauna.FOX, 10);
+        put(Fauna.RABBIT, 90);
+        put(Fauna.MOUSE, 90);
+        put(Fauna.DUCK, 80);
     }};
 
     public Eagle(int x, int y) {
@@ -30,12 +30,12 @@ public class Eagle extends Carnivorous {
     }
 
     @Override
-    public HashMap<FloraAndFauna, Integer> getChanceToCatch() {
+    public HashMap<Fauna, Integer> getChanceToCatch() {
         return chanceToCatch;
     }
 
     @Override
-    public FloraAndFauna getTypeOfAnimal() {
+    public Fauna getTypeOfAnimal() {
         return typeOfAnimal;
     }
 
@@ -43,6 +43,7 @@ public class Eagle extends Carnivorous {
     public void move(Sector[][] island) {
         super.move(island);
     }
+
 
     @Override
     public int getSpeed() {
