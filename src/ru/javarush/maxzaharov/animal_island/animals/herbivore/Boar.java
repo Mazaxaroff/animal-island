@@ -1,7 +1,7 @@
 package ru.javarush.maxzaharov.animal_island.animals.herbivore;
 
-import ru.javarush.maxzaharov.animal_island.Fauna;
-import ru.javarush.maxzaharov.animal_island.Sector;
+import ru.javarush.maxzaharov.animal_island.animals.Fauna;
+import ru.javarush.maxzaharov.animal_island.island.Sector;
 import ru.javarush.maxzaharov.animal_island.animals.abstracts.Herbivorous;
 
 import java.util.HashMap;
@@ -16,7 +16,6 @@ public class Boar extends Herbivorous {
     HashMap<Fauna, Integer> chanceToCatch = new HashMap<>() {{
         put(Fauna.MOUSE, 50);
         put(Fauna.CATERPILLAR, 90);
-        //put(FloraAndFauna.PLANT,100);
     }};
 
     @Override

@@ -1,9 +1,10 @@
 package ru.javarush.maxzaharov.animal_island.animals.abstracts;
 
-import ru.javarush.maxzaharov.animal_island.Fauna;
-import ru.javarush.maxzaharov.animal_island.RandomNumber;
+import ru.javarush.maxzaharov.animal_island.animals.Fauna;
+import ru.javarush.maxzaharov.animal_island.life_cycle.LifeCycle;
+import ru.javarush.maxzaharov.animal_island.services.RandomNumber;
 import ru.javarush.maxzaharov.animal_island.interfases.*;
-import ru.javarush.maxzaharov.animal_island.Sector;
+import ru.javarush.maxzaharov.animal_island.island.Sector;
 import ru.javarush.maxzaharov.animal_island.island.Island;
 
 import java.util.ArrayList;
@@ -78,7 +79,8 @@ public abstract class Animal extends BasicUnit implements Moveable, Eatable, Fer
 
     @Override
     public void hunger(Sector[][] island) {
-        this.setCurrentSatiety(this.getCurrentSatiety() - (this.getMaxSatiety() / 5.0));
+        this.setCurrentSatiety(this.getCurrentSatiety()
+                - (this.getMaxSatiety() / LifeCycle.MAX_COUNT_OF_DAYS_WITHOUT_FOOD));
         die(island);
     }
 
@@ -100,27 +102,29 @@ public abstract class Animal extends BasicUnit implements Moveable, Eatable, Fer
 
     @Override
     public void move(Sector[][] island) {
-        for (int i = 0; i < this.getSpeed(); i++) {
-            ArrayList<String> directions = new ArrayList<>();
-            if (getX() > 0 && island[getX() - 1][getY()].checkFreeSpace(this.getTypeOfAnimal())) {
-                directions.add("Left");
-            }
-            if (getX() < Island.WIDTH_OF_ISLAND - 1 && island[getX() + 1][getY()].checkFreeSpace(this.getTypeOfAnimal())) {
-                directions.add("Right");
-            }
-            if (getY() > 0 && island[getX()][getY() - 1].checkFreeSpace(this.getTypeOfAnimal())) {
-                directions.add("Up");
-            }
-            if (getY() < Island.HEIGHT_OF_ISLAND - 1 && island[getX()][getY() + 1].checkFreeSpace(this.getTypeOfAnimal())) {
-                directions.add("Down");
-            }
-            int randomDirection = RandomNumber.get(directions.size());
-            String direction = directions.get(randomDirection);
-            switch (direction) {
-                case "Left" -> horizontalMovement(island, x, y, -1);
-                case "Right" -> horizontalMovement(island, x, y, 1);
-                case "Up" -> verticalMovement(island, x, y, -1);
-                case "Down" -> verticalMovement(island, x, y, 1);
+        if (this.isAlive) {
+            for (int i = 0; i < this.getSpeed(); i++) {
+                ArrayList<String> directions = new ArrayList<>();
+                if (getX() > 0 && island[getX() - 1][getY()].checkFreeSpace(this.getTypeOfAnimal())) {
+                    directions.add("Left");
+                }
+                if (getX() < Island.WIDTH_OF_ISLAND - 1 && island[getX() + 1][getY()].checkFreeSpace(this.getTypeOfAnimal())) {
+                    directions.add("Right");
+                }
+                if (getY() > 0 && island[getX()][getY() - 1].checkFreeSpace(this.getTypeOfAnimal())) {
+                    directions.add("Up");
+                }
+                if (getY() < Island.HEIGHT_OF_ISLAND - 1 && island[getX()][getY() + 1].checkFreeSpace(this.getTypeOfAnimal())) {
+                    directions.add("Down");
+                }
+                int randomDirection = RandomNumber.get(directions.size());
+                String direction = directions.get(randomDirection);
+                switch (direction) {
+                    case "Left" -> horizontalMovement(island, x, y, -1);
+                    case "Right" -> horizontalMovement(island, x, y, 1);
+                    case "Up" -> verticalMovement(island, x, y, -1);
+                    case "Down" -> verticalMovement(island, x, y, 1);
+                }
             }
         }
     }

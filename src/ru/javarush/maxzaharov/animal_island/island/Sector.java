@@ -1,5 +1,7 @@
-package ru.javarush.maxzaharov.animal_island;
+package ru.javarush.maxzaharov.animal_island.island;
 
+import ru.javarush.maxzaharov.animal_island.animals.Fauna;
+import ru.javarush.maxzaharov.animal_island.services.RandomNumber;
 import ru.javarush.maxzaharov.animal_island.animals.abstracts.Animal;
 import ru.javarush.maxzaharov.animal_island.animals.carnivore.*;
 import ru.javarush.maxzaharov.animal_island.animals.herbivore.*;
@@ -64,12 +66,12 @@ public class Sector {
     }
 
 
-    public Sector(int x, int y, HashMap<Fauna, ArrayList<Animal>> populations) {
+    public Sector(int x, int y) {
         this.x = x;
         this.y = y;
         createPlant(); //todo вынести в класс День и вызывать в начале дня
         for (Fauna animal : Fauna.values()) {
-            CreateAnimal(x, y, animal, populations);
+            CreateAnimal(x, y, animal);
         }
     }
 
@@ -77,7 +79,8 @@ public class Sector {
         currentCountOfPlants = RandomNumber.get(MAX_COUNT_OF_PLANTS);
     }
 
-    private void CreateAnimal(int x, int y, Fauna typeOfAnimal, HashMap<Fauna, ArrayList<Animal>> populations) {
+    private void CreateAnimal(int x, int y, Fauna typeOfAnimal) {
+        HashMap<Fauna, ArrayList<Animal>> populations = World.populations;
         currentCountsOfAnimal.put(typeOfAnimal, RandomNumber.get(maxCountsOfAnimal.get(typeOfAnimal)));
         for (int i = 0; i < currentCountsOfAnimal.get(typeOfAnimal); i++) {
             switch (typeOfAnimal) {
@@ -107,5 +110,11 @@ public class Sector {
     public void changeCountOfAnimal(Fauna typeOfAnimal, int different) {
         currentCountsOfAnimal.
                 put(typeOfAnimal, currentCountsOfAnimal.get(typeOfAnimal) + different);
+    }
+
+    public HashMap<Fauna, ArrayList<Animal>> getAnimalAbleToEat
+            (HashMap<Fauna, Integer> chanceToCatch) {
+        return (HashMap<Fauna, ArrayList<Animal>>) World.populations.keySet().stream().
+                filter(type -> chanceToCatch.keySet().contains(type) && (currentCountsOfAnimal.get(type) > 0));
     }
 }

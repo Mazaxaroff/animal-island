@@ -1,6 +1,6 @@
 package ru.javarush.maxzaharov.animal_island.animals.abstracts;
 
-import ru.javarush.maxzaharov.animal_island.Sector;
+import ru.javarush.maxzaharov.animal_island.island.Sector;
 
 public class BasicUnit {
     int x;

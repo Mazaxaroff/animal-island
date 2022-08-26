@@ -1,7 +1,7 @@
 package ru.javarush.maxzaharov.animal_island.animals.herbivore;
 
-import ru.javarush.maxzaharov.animal_island.Fauna;
-import ru.javarush.maxzaharov.animal_island.Sector;
+import ru.javarush.maxzaharov.animal_island.animals.Fauna;
+import ru.javarush.maxzaharov.animal_island.island.Sector;
 import ru.javarush.maxzaharov.animal_island.animals.abstracts.Herbivorous;
 
 import java.util.HashMap;
@@ -15,7 +15,6 @@ public class Mouse extends Herbivorous {
     Fauna typeOfAnimal = Fauna.MOUSE;
     HashMap<Fauna, Integer> chanceToCatch = new HashMap<>() {{
         put(Fauna.CATERPILLAR, 90);
-        //put(FloraAndFauna.PLANT, 100);
     }};
 
     @Override
@@ -42,7 +41,6 @@ public class Mouse extends Herbivorous {
         super.move(island);
     }
 
-   
 
     @Override
     public int getSpeed() {

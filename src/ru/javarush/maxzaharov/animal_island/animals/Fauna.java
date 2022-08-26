@@ -1,4 +1,4 @@
-package ru.javarush.maxzaharov.animal_island;
+package ru.javarush.maxzaharov.animal_island.animals;
 
 public enum Fauna {
     BEAR,

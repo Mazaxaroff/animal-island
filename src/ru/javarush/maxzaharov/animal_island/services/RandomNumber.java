@@ -1,4 +1,4 @@
-package ru.javarush.maxzaharov.animal_island;
+package ru.javarush.maxzaharov.animal_island.services;
 
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
