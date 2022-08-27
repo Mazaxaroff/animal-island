@@ -134,7 +134,7 @@ public abstract class Animal extends BasicUnit implements Moveable, Eatable, Fer
     }
 
     @Override
-    public void reproduction() {
+    public void multiply() {
 
     }
 

@@ -15,8 +15,10 @@ public class Main {
 
         Dialog.hello();
         Dialog.printCountOfAllAnimal();
-        Dialog.printCountOfAllCorpses();
-        System.out.println(World.populations.get(Fauna.BOAR).get(0).getWeight());
+        World.populations.get(Fauna.BOAR).forEach(animal -> animal.move(island));
+        Dialog.printCountOfAllAnimal();
+       // Dialog.printCountOfAllCorpses();
+
 
 
 //        for (Fauna typeOfAnimal : Fauna.values()) {
