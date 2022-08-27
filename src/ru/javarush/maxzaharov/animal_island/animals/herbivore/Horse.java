@@ -6,47 +6,35 @@ import ru.javarush.maxzaharov.animal_island.animals.abstracts.Herbivorous;
 
 
 public class Horse extends Herbivorous {
-    private int speed = 4;
-    private double weight = 400;
-    private double maxSatiety = 60;
     private double currentSatiety = 60;
-    private String emoji = "\uD83D\uDC0E";
-    Fauna typeOfAnimal = Fauna.HORSE;
-
-    @Override
-    public String getEmoji() {
-        return emoji;
-    }
-
-    @Override
-    public Fauna getTypeOfAnimal() {
-        return typeOfAnimal;
-    }
 
     public Horse(int x, int y) {
         super(x, y);
     }
 
     @Override
-    public void move(Sector[][] island) {
-        super.move(island);
+    public String getEmoji() {
+        return "\uD83D\uDC0E";
     }
 
-   
+    @Override
+    public Fauna getTypeOfAnimal() {
+        return Fauna.HORSE;
+    }
 
     @Override
     public int getSpeed() {
-        return speed;
+        return 4;
     }
 
     @Override
     public double getWeight() {
-        return weight;
+        return 400;
     }
 
     @Override
     public double getMaxSatiety() {
-        return maxSatiety;
+        return 60;
     }
 
     @Override
@@ -57,5 +45,10 @@ public class Horse extends Herbivorous {
     @Override
     public void setCurrentSatiety(double currentSatiety) {
         this.currentSatiety = currentSatiety;
+    }
+
+    @Override
+    public void move(Sector[][] island) {
+        super.move(island);
     }
 }

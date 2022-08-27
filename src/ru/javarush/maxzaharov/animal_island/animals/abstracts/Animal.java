@@ -23,6 +23,10 @@ public abstract class Animal extends BasicUnit implements Moveable, Eatable, Fer
     Fauna typeOfAnimal;
     private HashMap<Fauna, Integer> chanceToCatch = new HashMap<>();
 
+    public Animal(int x, int y) {
+        super(x, y);
+    }
+
     public String getEmoji() {
         return emoji;
     }
@@ -35,8 +39,48 @@ public abstract class Animal extends BasicUnit implements Moveable, Eatable, Fer
         return typeOfAnimal;
     }
 
-    public Animal(int x, int y) {
-        super(x, y);
+    public int getSpeed() {
+        return speed;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
+    public double getMaxSatiety() {
+        return maxSatiety;
+    }
+
+    public double getCurrentSatiety() {
+        return currentSatiety;
+    }
+
+    public void setCurrentSatiety(double currentSatiety) {
+        this.currentSatiety = currentSatiety;
+    }
+
+    public boolean isCanMultiply() {
+        return isCanMultiply;
+    }
+
+    public void setCanMultiply(boolean canMultiply) {
+        isCanMultiply = canMultiply;
+    }
+
+    public boolean isCanEat() {
+        return isCanEat;
+    }
+
+    public void setCanEat(boolean canEat) {
+        isCanEat = canEat;
+    }
+
+    public boolean isAlive() {
+        return isAlive;
+    }
+
+    public void setAlive(boolean alive) {
+        isAlive = alive;
     }
 
     public boolean isCanMove() {
@@ -140,49 +184,4 @@ public abstract class Animal extends BasicUnit implements Moveable, Eatable, Fer
         setY(y + shift);
         island[x][y + shift].changeCountOfAnimal(this.getTypeOfAnimal(), 1);
     }
-
-
-    public int getSpeed() {
-        return speed;
     }
-
-    public double getWeight() {
-        return weight;
-    }
-
-    public double getMaxSatiety() {
-        return maxSatiety;
-    }
-
-    public double getCurrentSatiety() {
-        return currentSatiety;
-    }
-
-    public void setCurrentSatiety(double currentSatiety) {
-        this.currentSatiety = currentSatiety;
-    }
-
-    public boolean isCanMultiply() {
-        return isCanMultiply;
-    }
-
-    public void setCanMultiply(boolean canMultiply) {
-        isCanMultiply = canMultiply;
-    }
-
-    public boolean isCanEat() {
-        return isCanEat;
-    }
-
-    public void setCanEat(boolean canEat) {
-        isCanEat = canEat;
-    }
-
-    public boolean isAlive() {
-        return isAlive;
-    }
-
-    public void setAlive(boolean alive) {
-        isAlive = alive;
-    }
-}

@@ -7,64 +7,51 @@ import ru.javarush.maxzaharov.animal_island.animals.abstracts.Carnivorous;
 import java.util.HashMap;
 
 public class Wolf extends Carnivorous {
-    private int speed = 3;
-    private double weight = 50;
-    private double maxSatiety = 8;
     private double currentSatiety = 8;
-    private String emoji = "\uD83D\uDC3A";
-    Fauna typeOfAnimal = Fauna.WOLF;
-    HashMap<Fauna, Integer> chanceToCatch = new HashMap<>() {{
-        put(Fauna.HORSE, 10);
-        put(Fauna.DEER, 15);
-        put(Fauna.RABBIT, 60);
-        put(Fauna.MOUSE, 80);
-        put(Fauna.GOAT, 60);
-        put(Fauna.SHEEP, 70);
-        put(Fauna.BOAR, 15);
-        put(Fauna.BUFFALO, 10);
-        put(Fauna.DUCK, 40);
-    }};
 
     public Wolf(int x, int y) {
         super(x, y);
-
     }
 
     @Override
     public String getEmoji() {
-        return emoji;
+        return "\uD83D\uDC3A";
     }
 
     @Override
     public HashMap<Fauna, Integer> getChanceToCatch() {
+        HashMap<Fauna, Integer> chanceToCatch = new HashMap<>() {{
+            put(Fauna.HORSE, 10);
+            put(Fauna.DEER, 15);
+            put(Fauna.RABBIT, 60);
+            put(Fauna.MOUSE, 80);
+            put(Fauna.GOAT, 60);
+            put(Fauna.SHEEP, 70);
+            put(Fauna.BOAR, 15);
+            put(Fauna.BUFFALO, 10);
+            put(Fauna.DUCK, 40);
+        }};
         return chanceToCatch;
     }
 
     @Override
     public Fauna getTypeOfAnimal() {
-        return typeOfAnimal;
+        return Fauna.WOLF;
     }
-
-    @Override
-    public void move(Sector[][] island) {
-        super.move(island);
-    }
-
-
 
     @Override
     public int getSpeed() {
-        return speed;
+        return 3;
     }
 
     @Override
     public double getWeight() {
-        return weight;
+        return 50;
     }
 
     @Override
     public double getMaxSatiety() {
-        return maxSatiety;
+        return 8;
     }
 
     @Override
@@ -75,6 +62,11 @@ public class Wolf extends Carnivorous {
     @Override
     public void setCurrentSatiety(double currentSatiety) {
         this.currentSatiety = currentSatiety;
+    }
+
+    @Override
+    public void move(Sector[][] island) {
+        super.move(island);
     }
 
 }

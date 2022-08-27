@@ -10,8 +10,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Sector {
-    int x;
-    int y;
     public static final int MAX_COUNT_OF_WOLVES = 30;
     public static final int MAX_COUNT_OF_FOXES = 30;
     public static final int MAX_COUNT_OF_EAGLES = 20;
@@ -29,7 +27,8 @@ public class Sector {
     public static final int MAX_COUNT_OF_SHEEP = 140;
     public static final int MAX_COUNT_OF_PLANTS = 200;
     public static int currentCountOfPlants;
-
+    public int x;
+    public int y;
     HashMap<Fauna, Integer> maxCountsOfAnimal = new HashMap<>() {{
         put(Fauna.WOLF, MAX_COUNT_OF_WOLVES);
         put(Fauna.FOX, MAX_COUNT_OF_FOXES);
@@ -49,6 +48,15 @@ public class Sector {
     }};
     HashMap<Fauna, Integer> currentCountsOfAnimal = new HashMap<>();
 
+    public Sector(int x, int y) {
+        this.x = x;
+        this.y = y;
+        createPlant(); //todo вынести в класс День и вызывать в начале дня
+        for (Fauna animal : Fauna.values()) {
+            CreateAnimal(x, y, animal);
+        }
+    }
+
     public int getX() {
         return x;
     }
@@ -63,16 +71,6 @@ public class Sector {
 
     public void setY(int y) {
         this.y = y;
-    }
-
-
-    public Sector(int x, int y) {
-        this.x = x;
-        this.y = y;
-        createPlant(); //todo вынести в класс День и вызывать в начале дня
-        for (Fauna animal : Fauna.values()) {
-            CreateAnimal(x, y, animal);
-        }
     }
 
     private void createPlant() {
@@ -112,8 +110,7 @@ public class Sector {
                 put(typeOfAnimal, currentCountsOfAnimal.get(typeOfAnimal) + different);
     }
 
-    public HashMap<Fauna, ArrayList<Animal>> getAnimalAbleToEat
-            (HashMap<Fauna, Integer> chanceToCatch) {
+    public HashMap<Fauna, ArrayList<Animal>> getAnimalAbleToEat(HashMap<Fauna, Integer> chanceToCatch) {
         return (HashMap<Fauna, ArrayList<Animal>>) World.populations.keySet().stream().
                 filter(type -> chanceToCatch.keySet().contains(type) && (currentCountsOfAnimal.get(type) > 0));
     }

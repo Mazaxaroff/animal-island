@@ -13,6 +13,9 @@ public class World {
         }
     }};
     public static HashMap<Fauna, Integer> corpses = new HashMap<>();
+    public static int getPopulationsSize(Fauna typeOfAnimal){
+        return populations.get(typeOfAnimal).size();
+    }
 
     public void createCemetery(){
         for (Fauna typeOfAnimal : Fauna.values()) {
@@ -39,8 +42,6 @@ public class World {
         return (ArrayList<Fauna>) populations.keySet();
     }
 
-    public static int getPopulationsSize(Fauna typeOfAnimal){
-        return populations.get(typeOfAnimal).size();
-    }
+
 
 }

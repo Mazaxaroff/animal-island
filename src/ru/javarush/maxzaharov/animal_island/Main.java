@@ -10,12 +10,15 @@ public class Main {
     public static void main(String[] args) {
         new World();
         Sector[][] island = Island.create();
+        Sector firstSector = island[0][0];
+
 
         Dialog.hello();
         Dialog.printCountOfAllAnimal();
         Dialog.printCountOfAllCorpses();
+        System.out.println(World.populations.get(Fauna.BOAR).get(0).getWeight());
 
-        Sector firstSector = island[0][0];
+
 //        for (Fauna typeOfAnimal : Fauna.values()) {
 //            System.out.println(firstSector.currentCountsOfAnimal.get(typeOfAnimal) +
 //                    Population.populations.get(typeOfAnimal).get(0).getEmoji());

@@ -5,49 +5,35 @@ import ru.javarush.maxzaharov.animal_island.island.Sector;
 import ru.javarush.maxzaharov.animal_island.animals.abstracts.Herbivorous;
 
 public class Caterpillar extends Herbivorous {
-    private int speed = 0;
-    private double weight = 0.01;
-    private double maxSatiety = 0;
     private double currentSatiety = 0;
-    private String emoji = "\uD83D\uDC1B";
-    Fauna typeOfAnimal = Fauna.CATERPILLAR;
-
-    @Override
-    public String getEmoji() {
-        return emoji;
-    }
-
-       @Override
-    public Fauna getTypeOfAnimal() {
-        return typeOfAnimal;
-    }
 
     public Caterpillar(int x, int y) {
         super(x, y);
     }
 
     @Override
-    public void move(Sector[][] island) {
-        super.move(island);
+    public String getEmoji() {
+        return "\uD83D\uDC1B";
     }
 
     @Override
-    public void hunger(Sector[][] island) {
+    public Fauna getTypeOfAnimal() {
+        return Fauna.CATERPILLAR;
     }
 
     @Override
     public int getSpeed() {
-        return speed;
+        return 0;
     }
 
     @Override
     public double getWeight() {
-        return weight;
+        return 0.01;
     }
 
     @Override
     public double getMaxSatiety() {
-        return maxSatiety;
+        return 0;
     }
 
     @Override
@@ -58,5 +44,14 @@ public class Caterpillar extends Herbivorous {
     @Override
     public void setCurrentSatiety(double currentSatiety) {
         this.currentSatiety = currentSatiety;
+    }
+
+    @Override
+    public void move(Sector[][] island) {
+        super.move(island);
+    }
+
+    @Override
+    public void hunger(Sector[][] island) {
     }
 }
