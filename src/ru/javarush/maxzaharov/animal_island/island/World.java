@@ -2,6 +2,7 @@ package ru.javarush.maxzaharov.animal_island.island;
 
 import ru.javarush.maxzaharov.animal_island.animals.Fauna;
 import ru.javarush.maxzaharov.animal_island.animals.abstracts.Animal;
+import ru.javarush.maxzaharov.animal_island.services.RandomNumber;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,9 +20,9 @@ public class World {
 
     public void createCemetery(){
         for (Fauna typeOfAnimal : Fauna.values()) {
-            int countOfCorpses=0;
+            //int countOfCorpses=0;
             for (Animal animal : World.populations.get(typeOfAnimal)) {
-                countOfCorpses=0;
+                int countOfCorpses=0;
                 if (!animal.isAlive()){
                     countOfCorpses++;
                     corpses.put(typeOfAnimal,countOfCorpses);
@@ -43,5 +44,10 @@ public class World {
     }
 
 
+    public static Animal randomAnimalForAction (Fauna typeOfAnimal, int x, int y){
+        var animalsInSector= populations.get(typeOfAnimal).stream().filter(animal -> animal.getX()==x && animal.getY()==y).toList();
+        int indexOfAnimal = RandomNumber.get(animalsInSector.size());
+        return animalsInSector.get(indexOfAnimal);
+    }
 
 }

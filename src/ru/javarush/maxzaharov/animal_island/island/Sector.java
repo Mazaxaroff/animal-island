@@ -106,12 +106,20 @@ public class Sector {
     }
 
     public void changeCountOfAnimal(Fauna typeOfAnimal, int different) {
+        if(typeOfAnimal == Fauna.HORSE) {//todo delete me
+            System.out.println("Count before " + currentCountsOfAnimal.get(typeOfAnimal));
+        }
         currentCountsOfAnimal.
                 put(typeOfAnimal, currentCountsOfAnimal.get(typeOfAnimal) + different);
+        if(typeOfAnimal == Fauna.HORSE) {
+            System.out.println("Count after " + currentCountsOfAnimal.get(typeOfAnimal));
+        }
     }
 
-    public HashMap<Fauna, ArrayList<Animal>> getAnimalAbleToEat(HashMap<Fauna, Integer> chanceToCatch) {
-        return (HashMap<Fauna, ArrayList<Animal>>) World.populations.keySet().stream().
-                filter(type -> chanceToCatch.keySet().contains(type) && (currentCountsOfAnimal.get(type) > 0));
+    public Fauna getAnimalAbleToEat(HashMap<Fauna, Integer> chanceToCatch) {
+       var faunaList =  World.populations.keySet().stream().
+                filter(type -> chanceToCatch.keySet().contains(type) && (currentCountsOfAnimal.get(type) > 0)).toList();
+         int indexTypeOfAnimal = RandomNumber.get(faunaList.size());
+         return faunaList.get(indexTypeOfAnimal);
     }
 }

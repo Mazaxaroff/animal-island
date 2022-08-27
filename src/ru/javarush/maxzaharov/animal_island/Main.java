@@ -15,31 +15,20 @@ public class Main {
 
         Dialog.hello();
         Dialog.printCountOfAllAnimal();
-        World.populations.get(Fauna.BOAR).forEach(animal -> animal.move(island));
+        World.populations.get(Fauna.WOLF).forEach(animal -> animal.hunger(island));
+        World.populations.get(Fauna.WOLF).forEach(animal -> animal.eat(island));
         Dialog.printCountOfAllAnimal();
-       // Dialog.printCountOfAllCorpses();
+        Dialog.printCountOfAllCorpses();
 
 
 
-//        for (Fauna typeOfAnimal : Fauna.values()) {
-//            System.out.println(firstSector.currentCountsOfAnimal.get(typeOfAnimal) +
-//                    Population.populations.get(typeOfAnimal).get(0).getEmoji());
-//        }
 //
-//        for (Fauna typeOfAnimal : Population.populations.keySet()) {
-//            System.out.println("В секторе " + firstSector.getX() + " " + firstSector.getY() +
-//                    " было " + firstSector.currentCountsOfAnimal.get(typeOfAnimal) + " " + typeOfAnimal.toString());
-//        }
         //for (Fauna typeOfAnimal : populations.keySet()) {
         //fixme eat
         //fixme multyply
 //            populations.get(typeOfAnimal).get(0).move(island);
 //        }
-//        for (Fauna typeOfAnimal : populations.keySet()) {
-//            System.out.println("В секторе " + firstSector.getX() + " " + firstSector.getY() +
-//                    " стало " + firstSector.currentCountsOfAnimal.get(typeOfAnimal) + " " + typeOfAnimal.toString());
-//        }
-
+//
 //        System.out.println("В секторе " + firstSector.getX() + " " + firstSector.getY() + " " +
 //                firstSector.currentCountOfPlants + " травы");
 //
@@ -58,7 +47,7 @@ public class Main {
 //
 //        }
 
-        // Population.populations.get(Fauna.BOA).get(0).eat(island);
+
 
 
     }
