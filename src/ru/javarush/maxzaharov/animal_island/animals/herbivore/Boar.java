@@ -13,6 +13,7 @@ import java.util.HashMap;
 public class Boar extends Herbivorous {
     private double currentSatiety = 50;
     private int speed = 2;
+    private int maxChild = 5;
     private double weight = 400;
     private double maxSatiety = 50;
     private String emoji = "\uD83D\uDC17";
@@ -48,6 +49,11 @@ public class Boar extends Herbivorous {
     @Override
     public int getSpeed() {
         return 2;
+    }
+
+    @Override
+    public int getMaxChild() {
+        return 5;
     }
 
     @Override

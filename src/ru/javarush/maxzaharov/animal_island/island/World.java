@@ -8,23 +8,29 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class World {
-   public static HashMap<Fauna, ArrayList<Animal>> populations = new HashMap<>() {{
+    public static HashMap<Fauna, ArrayList<Animal>> populations = new HashMap<>() {{
+        for (Fauna typeOfAnimal : Fauna.values()) {
+            put(typeOfAnimal, new ArrayList<>());
+        }
+    }};
+    public static HashMap<Fauna, ArrayList<Animal>> babiesPopulations = new HashMap<>() {{
         for (Fauna typeOfAnimal : Fauna.values()) {
             put(typeOfAnimal, new ArrayList<>());
         }
     }};
     public static HashMap<Fauna, Integer> corpses = new HashMap<>();
-    public static int getPopulationsSize(Fauna typeOfAnimal){
+
+    public static int getPopulationsSize(Fauna typeOfAnimal) {
         return populations.get(typeOfAnimal).size();
     }
 
-    public static void createCemetery(){
+    public static void createCemetery() {
         for (Fauna typeOfAnimal : Fauna.values()) {
-            int countOfCorpses=0;
+            int countOfCorpses = 0;
             for (Animal animal : World.populations.get(typeOfAnimal)) {
-                if (!animal.isAlive()){
+                if (!animal.isAlive()) {
                     countOfCorpses++;
-                    corpses.put(typeOfAnimal,countOfCorpses);
+                    corpses.put(typeOfAnimal, countOfCorpses);
                 }
             }
         }
@@ -38,13 +44,29 @@ public class World {
         return populations;
     }
 
-    public ArrayList<Fauna> setOfAnimals(){
+    public ArrayList<Fauna> setOfAnimals() {
         return (ArrayList<Fauna>) populations.keySet();
     }
 
 
-    public static Animal randomAnimalForAction (Fauna typeOfAnimal, int x, int y){
-        var animalsInSector= populations.get(typeOfAnimal).stream().filter(animal -> animal.getX()==x && animal.getY()==y).toList();
+    public static Animal randomAnimalForAction(Fauna typeOfAnimal, int x, int y) {
+        var animalsInSector = populations.get(typeOfAnimal).stream()
+                .filter(animal -> animal.getX() == x && animal.getY() == y && animal.isAlive())
+                .toList();
+        if (animalsInSector.size()==0){
+            return null;
+        }
+        int indexOfAnimal = RandomNumber.get(animalsInSector.size());
+        return animalsInSector.get(indexOfAnimal);
+    }
+
+    public static Animal randomAnimalForAction(Fauna typeOfAnimal, int x, int y, Animal self) {
+        var animalsInSector = populations.get(typeOfAnimal).stream()
+                .filter(animal -> animal.getX() == x && animal.getY() == y && animal.isAlive() && !animal.equals(self))
+                .toList();
+        if (animalsInSector.size()==0){
+            return null;
+        }
         int indexOfAnimal = RandomNumber.get(animalsInSector.size());
         return animalsInSector.get(indexOfAnimal);
     }

@@ -30,15 +30,17 @@ public class LifeCycle {
             World.populations.get(typeOfAnimal).forEach(animal -> animal.move(island));
         }
     }
-    public static void multiplyForAll() {
+    public static void multiplyForAll(Sector[][] island) {
         for (Fauna typeOfAnimal : Fauna.values()) {
-            World.populations.get(typeOfAnimal).forEach(Animal::multiply);
+             World.populations.get(typeOfAnimal).stream()
+                    .forEach(animal -> animal.multiply(island));
         }
+        World.babiesPopulations.keySet().stream().forEach(System.out::println);
+        //todo перенести детей в популяцию взрослых
     }
     public static void getStatistic(){
 
     }
-
 
     public static void start(Sector[][] island) {
         World.createCemetery();
@@ -46,7 +48,7 @@ public class LifeCycle {
         hungerForAll(island);
         moveForAll(island);
         eatForAll(island);
-        multiplyForAll();
+        multiplyForAll(island);
         getStatistic();
 
     }

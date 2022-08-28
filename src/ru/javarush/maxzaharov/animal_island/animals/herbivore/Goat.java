@@ -8,6 +8,7 @@ import ru.javarush.maxzaharov.animal_island.animals.abstracts.Herbivorous;
 public class Goat extends Herbivorous {
     private double currentSatiety = 10;
     private int speed = 3;
+    private int maxChild = 3;
     private double weight = 60;
     private double maxSatiety = 10;
     private String emoji = "\uD83D\uDC10";
@@ -29,6 +30,11 @@ public class Goat extends Herbivorous {
 
     @Override
     public int getSpeed() {
+        return 3;
+    }
+
+    @Override
+    public int getMaxChild() {
         return 3;
     }
 

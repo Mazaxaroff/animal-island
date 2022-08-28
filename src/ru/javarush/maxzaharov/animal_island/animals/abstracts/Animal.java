@@ -1,6 +1,7 @@
 package ru.javarush.maxzaharov.animal_island.animals.abstracts;
 
 import ru.javarush.maxzaharov.animal_island.animals.Fauna;
+import ru.javarush.maxzaharov.animal_island.island.World;
 import ru.javarush.maxzaharov.animal_island.life_cycle.LifeCycle;
 import ru.javarush.maxzaharov.animal_island.services.RandomNumber;
 import ru.javarush.maxzaharov.animal_island.interfases.*;
@@ -12,6 +13,7 @@ import java.util.HashMap;
 
 public abstract class Animal extends BasicUnit implements Moveable, Eatable, Fertile, Hunger, Die {
     private int speed;
+    private int maxChild;
     private double weight;
     private double maxSatiety;
     private double currentSatiety;
@@ -29,6 +31,10 @@ public abstract class Animal extends BasicUnit implements Moveable, Eatable, Fer
 
     public String getEmoji() {
         return emoji;
+    }
+
+    public int getMaxChild() {
+        return maxChild;
     }
 
     public HashMap<Fauna, Integer> getChanceToCatch() {
@@ -125,25 +131,44 @@ public abstract class Animal extends BasicUnit implements Moveable, Eatable, Fer
     public void hunger(Sector[][] island) {
         this.setCurrentSatiety(this.getCurrentSatiety()
                 - (this.getMaxSatiety() / LifeCycle.MAX_COUNT_OF_DAYS_WITHOUT_FOOD));
-        if (this.getCurrentSatiety()<=0) {
+        if (this.getCurrentSatiety() <= 0) {
             this.die(island);
         }
     }
 
     @Override
     public void eat(Sector[][] island) {
-
     }
 
     @Override
-    public void multiply() {
-
+    public void multiply(Sector[][] island) {
+        if (this.isAlive() && this.isCanMultiply()) {
+            if (island[getX()][getY()].checkFreeSpace(getTypeOfAnimal())) {
+                Animal pair = World.randomAnimalForAction(getTypeOfAnimal(), getX(), getY(), this);
+                if (pair != null && pair.isCanMultiply()) {
+                    this.setCanMultiply(false);
+                    pair.setCanMultiply(false);
+                    int randomNumberOfChild = RandomNumber.get(this.getMaxChild());
+                    if (randomNumberOfChild > 0) {
+                        int currentCountOfAnimal =
+                                island[getX()][getY()].getCurrentCountsOfAnimal().get(getTypeOfAnimal());
+                        int maxCountOfAnimal = island[getX()][getY()].getMaxCountsOfAnimal().get(getTypeOfAnimal());
+                        if (currentCountOfAnimal + randomNumberOfChild > maxCountOfAnimal) {
+                            randomNumberOfChild = maxCountOfAnimal - currentCountOfAnimal;
+                        }
+                        island[getX()][getY()].changeCountOfAnimal(getTypeOfAnimal(), randomNumberOfChild);
+                        island[getX()][getY()].sectorFilling(
+                                getTypeOfAnimal(), getX(), getY(), randomNumberOfChild, World.babiesPopulations);
+                    }
+                }
+            }
+        }
     }
 
     @Override
     public void die(Sector[][] island) {
-            this.setAlive(false);
-            island[getX()][getY()].changeCountOfAnimal(this.getTypeOfAnimal(),-1);
+        this.setAlive(false);
+        island[getX()][getY()].changeCountOfAnimal(this.getTypeOfAnimal(), -1);
     }
 
     @Override
@@ -154,16 +179,18 @@ public abstract class Animal extends BasicUnit implements Moveable, Eatable, Fer
                 if (getX() > 0 && island[getX() - 1][getY()].checkFreeSpace(this.getTypeOfAnimal())) {
                     directions.add("Left");
                 }
-                if (getX() < Island.WIDTH_OF_ISLAND - 1 && island[getX() + 1][getY()].checkFreeSpace(this.getTypeOfAnimal())) {
+                if (getX() < Island.WIDTH_OF_ISLAND - 1 && island[getX() + 1][getY()]
+                        .checkFreeSpace(this.getTypeOfAnimal())) {
                     directions.add("Right");
                 }
                 if (getY() > 0 && island[getX()][getY() - 1].checkFreeSpace(this.getTypeOfAnimal())) {
                     directions.add("Up");
                 }
-                if (getY() < Island.HEIGHT_OF_ISLAND - 1 && island[getX()][getY() + 1].checkFreeSpace(this.getTypeOfAnimal())) {
+                if (getY() < Island.HEIGHT_OF_ISLAND - 1 && island[getX()][getY() + 1]
+                        .checkFreeSpace(this.getTypeOfAnimal())) {
                     directions.add("Down");
                 }
-                if (directions.size()>0) {
+                if (directions.size() > 0) {
                     int randomDirection = RandomNumber.get(directions.size());
                     String direction = directions.get(randomDirection);
                     switch (direction) {
@@ -188,4 +215,4 @@ public abstract class Animal extends BasicUnit implements Moveable, Eatable, Fer
         setY(y + shift);
         island[x][y + shift].changeCountOfAnimal(this.getTypeOfAnimal(), 1);
     }
-    }
+}

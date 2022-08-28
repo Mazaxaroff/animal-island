@@ -9,6 +9,7 @@ import java.util.HashMap;
 public class Boa extends Carnivorous {
     private double currentSatiety = 3;
     private int speed = 1;
+    private int maxChild = 3;
     private double weight = 15;
     private double maxSatiety = 3;
     private String emoji = "\uD83D\uDC0D";
@@ -45,7 +46,12 @@ public class Boa extends Carnivorous {
         return Fauna.BOA;
     }
 
-      @Override
+    @Override
+    public int getMaxChild() {
+        return 3;
+    }
+
+    @Override
     public int getSpeed() {
         return 1;
     }

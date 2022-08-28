@@ -25,6 +25,8 @@ public class Main {
         LifeCycle.eatForAll(island);
         World.createCemetery();
         LifeCycle.deleteTheCorpses();
+        LifeCycle.multiplyForAll(island);
+
         Dialog.printCountOfAllCorpses();
         Dialog.printCountOfAllAnimal();
         Dialog.printCountOfAllPlants(island);

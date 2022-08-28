@@ -12,6 +12,7 @@ import java.util.HashMap;
 public class Mouse extends Herbivorous {
     private double currentSatiety = 0.01;
     private int speed = 1;
+    private int maxChild = 10;
     private double weight = 0.05;
     private double maxSatiety = 0.01;
     private String emoji = "\uD83D\uDC01";
@@ -45,6 +46,11 @@ public class Mouse extends Herbivorous {
     @Override
     public int getSpeed() {
         return 1;
+    }
+
+    @Override
+    public int getMaxChild() {
+        return 10;
     }
 
     @Override

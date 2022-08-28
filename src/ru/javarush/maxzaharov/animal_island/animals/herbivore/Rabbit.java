@@ -7,6 +7,7 @@ import ru.javarush.maxzaharov.animal_island.animals.abstracts.Herbivorous;
 public class Rabbit extends Herbivorous {
     private double currentSatiety = 0.45;
     private int speed = 2;
+    private int maxChild = 8;
     private double weight = 2;
     private double maxSatiety = 0.45;
     private String emoji = "\uD83D\uDC07";
@@ -29,6 +30,11 @@ public class Rabbit extends Herbivorous {
     @Override
     public int getSpeed() {
         return 2;
+    }
+
+    @Override
+    public int getMaxChild() {
+        return 8;
     }
 
     @Override

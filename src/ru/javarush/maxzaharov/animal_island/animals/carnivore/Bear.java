@@ -8,6 +8,7 @@ import java.util.HashMap;
 
 public class Bear extends Carnivorous {
     private int speed = 2;
+    private int maxChild = 2;
     private double weight = 500;
     private double maxSatiety = 80;
     private String emoji = "\uD83D\uDC3B";
@@ -55,6 +56,11 @@ public class Bear extends Carnivorous {
     @Override
     public Fauna getTypeOfAnimal() {
         return Fauna.BEAR;
+    }
+
+    @Override
+    public int getMaxChild() {
+        return 2;
     }
 
     @Override

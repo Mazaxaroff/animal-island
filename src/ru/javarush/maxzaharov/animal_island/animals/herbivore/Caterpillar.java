@@ -7,6 +7,7 @@ import ru.javarush.maxzaharov.animal_island.animals.abstracts.Herbivorous;
 public class Caterpillar extends Herbivorous {
     private double currentSatiety = 0;
     private int speed = 0;
+    private int maxChild = 20;
     private double weight = 0.01;
     private double maxSatiety = 0;
     private String emoji = "\uD83D\uDC1B";
@@ -29,6 +30,11 @@ public class Caterpillar extends Herbivorous {
     @Override
     public int getSpeed() {
         return 0;
+    }
+
+    @Override
+    public int getMaxChild() {
+        return 20;
     }
 
     @Override

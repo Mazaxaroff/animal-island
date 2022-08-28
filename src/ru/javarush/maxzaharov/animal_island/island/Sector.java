@@ -73,18 +73,26 @@ public class Sector {
         this.y = y;
     }
 
-    public int getCurrentCountOfPlants() {
-        return currentCountOfPlants;
+    public HashMap<Fauna, Integer> getCurrentCountsOfAnimal() {
+        return currentCountsOfAnimal;
     }
 
     private void createPlant() {
         currentCountOfPlants = RandomNumber.get(MAX_COUNT_OF_PLANTS);
     }
 
+    public HashMap<Fauna, Integer> getMaxCountsOfAnimal() {
+        return maxCountsOfAnimal;
+    }
+
     private void CreateAnimal(int x, int y, Fauna typeOfAnimal) {
-        HashMap<Fauna, ArrayList<Animal>> populations = World.populations;
         currentCountsOfAnimal.put(typeOfAnimal, RandomNumber.get(maxCountsOfAnimal.get(typeOfAnimal)));
-        for (int i = 0; i < currentCountsOfAnimal.get(typeOfAnimal); i++) {
+      sectorFilling(typeOfAnimal, x, y, currentCountsOfAnimal.get(typeOfAnimal), World.populations);
+    }
+
+    public void sectorFilling(Fauna typeOfAnimal, int x, int y, int count, HashMap<Fauna, ArrayList<Animal>> population ){
+        HashMap<Fauna, ArrayList<Animal>> populations = population;
+        for (int i = 0; i < count; i++) {
             switch (typeOfAnimal) {
                 case WOLF -> populations.get(typeOfAnimal).add(new Wolf(x, y));
                 case BEAR -> populations.get(typeOfAnimal).add(new Bear(x, y));
