@@ -8,6 +8,17 @@ import java.util.HashMap;
 
 public class Eagle extends Carnivorous {
     private double currentSatiety = 1;
+    private int speed = 3;
+    private double weight = 6;
+    private double maxSatiety = 1;
+    private String emoji = "\uD83E\uDD85";
+    Fauna typeOfAnimal = Fauna.EAGLE;
+    HashMap<Fauna, Integer> chanceToCatch = new HashMap<>() {{
+        put(Fauna.FOX, 10);
+        put(Fauna.RABBIT, 90);
+        put(Fauna.MOUSE, 90);
+        put(Fauna.DUCK, 80);
+    }};
 
     public Eagle(int x, int y) {
         super(x, y);

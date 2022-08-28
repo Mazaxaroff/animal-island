@@ -18,11 +18,10 @@ public class World {
         return populations.get(typeOfAnimal).size();
     }
 
-    public void createCemetery(){
+    public static void createCemetery(){
         for (Fauna typeOfAnimal : Fauna.values()) {
-            //int countOfCorpses=0;
+            int countOfCorpses=0;
             for (Animal animal : World.populations.get(typeOfAnimal)) {
-                int countOfCorpses=0;
                 if (!animal.isAlive()){
                     countOfCorpses++;
                     corpses.put(typeOfAnimal,countOfCorpses);

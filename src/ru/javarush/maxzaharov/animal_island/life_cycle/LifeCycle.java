@@ -12,11 +12,7 @@ public class LifeCycle {
 
     public static void deleteTheCorpses() {
         for (Fauna typeOfAnimal : Fauna.values()) {
-            for (Animal animal : World.populations.get(typeOfAnimal)) {
-                if (!animal.isAlive()) {
-                    World.populations.get(typeOfAnimal).remove(animal);
-                }
-            }
+            World.populations.get(typeOfAnimal).removeIf(animal -> !animal.isAlive());
         }
     }
     public static void hungerForAll(Sector[][] island) {
@@ -36,7 +32,7 @@ public class LifeCycle {
     }
     public static void multiplyForAll() {
         for (Fauna typeOfAnimal : Fauna.values()) {
-            World.populations.get(typeOfAnimal).forEach(animal -> animal.multiply());
+            World.populations.get(typeOfAnimal).forEach(Animal::multiply);
         }
     }
     public static void getStatistic(){
@@ -45,6 +41,7 @@ public class LifeCycle {
 
 
     public static void start(Sector[][] island) {
+        World.createCemetery();
         deleteTheCorpses();
         hungerForAll(island);
         moveForAll(island);

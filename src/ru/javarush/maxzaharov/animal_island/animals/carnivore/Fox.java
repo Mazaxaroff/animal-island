@@ -8,6 +8,17 @@ import java.util.HashMap;
 
 public class Fox extends Carnivorous {
     private double currentSatiety = 2;
+    private int speed = 2;
+    private double weight = 8;
+    private double maxSatiety = 2;
+    private String emoji = "\uD83E\uDD8A";
+    Fauna typeOfAnimal = Fauna.FOX;
+    HashMap<Fauna, Integer> chanceToCatch = new HashMap<>() {{
+        put(Fauna.RABBIT, 70);
+        put(Fauna.MOUSE, 90);
+        put(Fauna.DUCK, 60);
+        put(Fauna.CATERPILLAR, 40);
+    }};
 
     public Fox(int x, int y) {
         super(x, y);

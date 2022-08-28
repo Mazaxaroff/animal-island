@@ -125,7 +125,9 @@ public abstract class Animal extends BasicUnit implements Moveable, Eatable, Fer
     public void hunger(Sector[][] island) {
         this.setCurrentSatiety(this.getCurrentSatiety()
                 - (this.getMaxSatiety() / LifeCycle.MAX_COUNT_OF_DAYS_WITHOUT_FOOD));
-        die(island);
+        if (this.getCurrentSatiety()<=0) {
+            this.die(island);
+        }
     }
 
     @Override
@@ -161,13 +163,15 @@ public abstract class Animal extends BasicUnit implements Moveable, Eatable, Fer
                 if (getY() < Island.HEIGHT_OF_ISLAND - 1 && island[getX()][getY() + 1].checkFreeSpace(this.getTypeOfAnimal())) {
                     directions.add("Down");
                 }
-                int randomDirection = RandomNumber.get(directions.size());
-                String direction = directions.get(randomDirection);
-                switch (direction) {
-                    case "Left" -> horizontalMovement(island, x, y, -1);
-                    case "Right" -> horizontalMovement(island, x, y, 1);
-                    case "Up" -> verticalMovement(island, x, y, -1);
-                    case "Down" -> verticalMovement(island, x, y, 1);
+                if (directions.size()>0) {
+                    int randomDirection = RandomNumber.get(directions.size());
+                    String direction = directions.get(randomDirection);
+                    switch (direction) {
+                        case "Left" -> horizontalMovement(island, x, y, -1);
+                        case "Right" -> horizontalMovement(island, x, y, 1);
+                        case "Up" -> verticalMovement(island, x, y, -1);
+                        case "Down" -> verticalMovement(island, x, y, 1);
+                    }
                 }
             }
         }

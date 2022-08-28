@@ -16,8 +16,8 @@ public abstract class Carnivorous extends Animal {
     public void eat(Sector[][] island) {
         if (this.getCurrentSatiety() != this.getMaxSatiety()) {
             Fauna availableTypeOfAnimal = island[getX()][getY()].getAnimalAbleToEat(this.getChanceToCatch());
-            int attempt = RandomNumber.get(100);
-            if (attempt <= this.getChanceToCatch().get(availableTypeOfAnimal)) {
+            int attempt = RandomNumber.get(RandomNumber.HUNDRED_PERCENT);
+            if (availableTypeOfAnimal!= null && attempt <= this.getChanceToCatch().get(availableTypeOfAnimal)) {
                 Animal victim = World.randomAnimalForAction(availableTypeOfAnimal, getX(), getY());
                 this.setCurrentSatiety(Math.min(getCurrentSatiety() + victim.getWeight(), this.getMaxSatiety()));
                 victim.die(island);

@@ -6,6 +6,11 @@ import ru.javarush.maxzaharov.animal_island.animals.abstracts.Herbivorous;
 
 public class Rabbit extends Herbivorous {
     private double currentSatiety = 0.45;
+    private int speed = 2;
+    private double weight = 2;
+    private double maxSatiety = 0.45;
+    private String emoji = "\uD83D\uDC07";
+    Fauna typeOfAnimal = Fauna.RABBIT;
 
     public Rabbit(int x, int y) {
         super(x, y);

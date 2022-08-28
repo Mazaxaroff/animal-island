@@ -26,7 +26,7 @@ public class Sector {
     public static final int MAX_COUNT_OF_RABBITS = 150;
     public static final int MAX_COUNT_OF_SHEEP = 140;
     public static final int MAX_COUNT_OF_PLANTS = 200;
-    public static int currentCountOfPlants;
+    public int currentCountOfPlants;
     public int x;
     public int y;
     HashMap<Fauna, Integer> maxCountsOfAnimal = new HashMap<>() {{
@@ -52,8 +52,8 @@ public class Sector {
         this.x = x;
         this.y = y;
         createPlant(); //todo вынести в класс День и вызывать в начале дня
-        for (Fauna animal : Fauna.values()) {
-            CreateAnimal(x, y, animal);
+        for (Fauna typeOfAnimal : Fauna.values()) {
+            CreateAnimal(x, y, typeOfAnimal);
         }
     }
 
@@ -71,6 +71,10 @@ public class Sector {
 
     public void setY(int y) {
         this.y = y;
+    }
+
+    public int getCurrentCountOfPlants() {
+        return currentCountOfPlants;
     }
 
     private void createPlant() {
@@ -106,20 +110,17 @@ public class Sector {
     }
 
     public void changeCountOfAnimal(Fauna typeOfAnimal, int different) {
-        if(typeOfAnimal == Fauna.HORSE) {//todo delete me
-            System.out.println("Count before " + currentCountsOfAnimal.get(typeOfAnimal));
-        }
         currentCountsOfAnimal.
                 put(typeOfAnimal, currentCountsOfAnimal.get(typeOfAnimal) + different);
-        if(typeOfAnimal == Fauna.HORSE) {
-            System.out.println("Count after " + currentCountsOfAnimal.get(typeOfAnimal));
-        }
     }
 
     public Fauna getAnimalAbleToEat(HashMap<Fauna, Integer> chanceToCatch) {
-       var faunaList =  World.populations.keySet().stream().
-                filter(type -> chanceToCatch.keySet().contains(type) && (currentCountsOfAnimal.get(type) > 0)).toList();
-         int indexTypeOfAnimal = RandomNumber.get(faunaList.size());
-         return faunaList.get(indexTypeOfAnimal);
+        var faunaList = World.populations.keySet().stream().
+                filter(type -> chanceToCatch.containsKey(type) && (currentCountsOfAnimal.get(type) > 0)).toList();
+        if (faunaList.size() == 0) {
+            return null;
+        }
+        int indexTypeOfAnimal = RandomNumber.get(faunaList.size());
+        return faunaList.get(indexTypeOfAnimal);
     }
 }

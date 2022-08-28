@@ -4,7 +4,12 @@ import ru.javarush.maxzaharov.animal_island.animals.Fauna;
 import ru.javarush.maxzaharov.animal_island.island.Island;
 import ru.javarush.maxzaharov.animal_island.island.Sector;
 import ru.javarush.maxzaharov.animal_island.island.World;
+import ru.javarush.maxzaharov.animal_island.life_cycle.LifeCycle;
+import ru.javarush.maxzaharov.animal_island.services.Counters;
 import ru.javarush.maxzaharov.animal_island.services.Dialog;
+import ru.javarush.maxzaharov.animal_island.services.RandomNumber;
+
+import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
@@ -15,39 +20,17 @@ public class Main {
 
         Dialog.hello();
         Dialog.printCountOfAllAnimal();
-        World.populations.get(Fauna.WOLF).forEach(animal -> animal.hunger(island));
-        World.populations.get(Fauna.WOLF).forEach(animal -> animal.eat(island));
-        Dialog.printCountOfAllAnimal();
+        Dialog.printCountOfAllPlants(island);
+        LifeCycle.hungerForAll(island);
+        LifeCycle.eatForAll(island);
+        World.createCemetery();
+        LifeCycle.deleteTheCorpses();
         Dialog.printCountOfAllCorpses();
+        Dialog.printCountOfAllAnimal();
+        Dialog.printCountOfAllPlants(island);
 
-
-
-//
-        //for (Fauna typeOfAnimal : populations.keySet()) {
-        //fixme eat
-        //fixme multyply
-//            populations.get(typeOfAnimal).get(0).move(island);
-//        }
-//
 //        System.out.println("В секторе " + firstSector.getX() + " " + firstSector.getY() + " " +
 //                firstSector.currentCountOfPlants + " травы");
-//
-//
-//        for (Fauna type : Fauna.values()) {
-//            System.out.println(Population.populations.get(type).get(0).getTypeOfAnimal().toString() +
-//                    " живо? = " + Population.populations.get(type).get(0).isAlive());
-//        }
-//            for (Fauna typeOfAnimal : Population.populations.keySet()) {
-//                Population.populations.get(typeOfAnimal).get(0).die(island);
-//            }
-//
-//        for (Fauna type : Fauna.values()) {
-//            System.out.println(Population.populations.get(type).get(0).getTypeOfAnimal().toString() +
-//                    " живо? = " +Population.populations.get(type).get(0).isAlive());
-//
-//        }
-
-
 
 
     }
