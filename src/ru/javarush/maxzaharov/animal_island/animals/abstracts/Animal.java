@@ -18,8 +18,6 @@ public abstract class Animal extends BasicUnit implements Moveable, Eatable, Fer
     private double maxSatiety;
     private double currentSatiety;
     private boolean isCanMultiply = true;
-    private boolean isCanMove = true;
-    private boolean isCanEat = true;
     private boolean isAlive = true;
     private String emoji;
     Fauna typeOfAnimal;
@@ -73,28 +71,12 @@ public abstract class Animal extends BasicUnit implements Moveable, Eatable, Fer
         isCanMultiply = canMultiply;
     }
 
-    public boolean isCanEat() {
-        return isCanEat;
-    }
-
-    public void setCanEat(boolean canEat) {
-        isCanEat = canEat;
-    }
-
     public boolean isAlive() {
         return isAlive;
     }
 
     public void setAlive(boolean alive) {
         isAlive = alive;
-    }
-
-    public boolean isCanMove() {
-        return isCanMove;
-    }
-
-    public void setCanMove(boolean canMove) {
-        isCanMove = canMove;
     }
 
     @Override

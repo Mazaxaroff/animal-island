@@ -2,8 +2,8 @@ package ru.javarush.maxzaharov.animal_island.island;
 
 
 public class Island {
-    public static final int WIDTH_OF_ISLAND = 2;
-    public static final int HEIGHT_OF_ISLAND = 2;
+    public static final int WIDTH_OF_ISLAND = 5;
+    public static final int HEIGHT_OF_ISLAND = 5;
     public static final Sector[][] LAND = new Sector[WIDTH_OF_ISLAND][HEIGHT_OF_ISLAND];
 
     public static Sector[][] create() {

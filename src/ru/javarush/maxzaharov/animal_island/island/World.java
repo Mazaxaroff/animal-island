@@ -20,8 +20,8 @@ public class World {
     }};
     public static HashMap<Fauna, Integer> corpses = new HashMap<>();
 
-    public static int getPopulationsSize(Fauna typeOfAnimal) {
-        return populations.get(typeOfAnimal).size();
+    public static int getPopulationsSize(Fauna typeOfAnimal, HashMap<Fauna, ArrayList<Animal>> population) {
+        return population.get(typeOfAnimal).size();
     }
 
     public static void createCemetery() {
@@ -39,15 +39,6 @@ public class World {
     public World() {
         this.populations = populations;
     }
-
-    public HashMap<Fauna, ArrayList<Animal>> getPopulations() {
-        return populations;
-    }
-
-    public ArrayList<Fauna> setOfAnimals() {
-        return (ArrayList<Fauna>) populations.keySet();
-    }
-
 
     public static Animal randomAnimalForAction(Fauna typeOfAnimal, int x, int y) {
         var animalsInSector = populations.get(typeOfAnimal).stream()
