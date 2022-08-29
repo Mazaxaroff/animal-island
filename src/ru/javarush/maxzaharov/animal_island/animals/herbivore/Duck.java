@@ -12,7 +12,7 @@ import java.util.HashMap;
 public class Duck extends Herbivorous {
     private double currentSatiety = 0.15;
     private int speed = 4;
-    private int maxChild = 7;
+    private int maxChild = 5;
     private double weight = 1;
     private double maxSatiety = 0.15;
     private String emoji = "\uD83E\uDD86";

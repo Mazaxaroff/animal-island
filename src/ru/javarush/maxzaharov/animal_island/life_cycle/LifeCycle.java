@@ -5,6 +5,8 @@ import ru.javarush.maxzaharov.animal_island.island.Sector;
 import ru.javarush.maxzaharov.animal_island.island.World;
 import ru.javarush.maxzaharov.animal_island.services.Counters;
 
+import java.util.Arrays;
+
 public class LifeCycle {
     private static final int COUNT_OF_DAYS = 3;
     public static final double MAX_COUNT_OF_DAYS_WITHOUT_FOOD = 5.0;
@@ -61,6 +63,10 @@ public class LifeCycle {
         }
     }
 
+    private static void plantsReborn(Sector[][] island){
+        Arrays.stream(island).flatMap(Arrays::stream).forEach(sector -> sector.createPlant());
+    }
+
     private static void hello() {
         System.out.println("Добро пожаловать в симуляцию острова с животными!");
     }
@@ -92,6 +98,7 @@ public class LifeCycle {
         hello();
         for (int i = 1; i < COUNT_OF_DAYS+1; i++) {
             System.out.println("День " + i);
+            plantsReborn(island);
             printCountOfAllAnimal();
             printCountOfAllPlants(island);
             hungerForAll(island);
@@ -102,9 +109,11 @@ public class LifeCycle {
             multiplyForAll(island);
             System.out.println();
             printCountOfAllBabies();
+            printCountOfAllPlants(island);
             deleteTheBabies();
         }
         System.out.println("В завершении симуляции");
         printCountOfAllAnimal();
+        printCountOfAllPlants(island);
     }
 }

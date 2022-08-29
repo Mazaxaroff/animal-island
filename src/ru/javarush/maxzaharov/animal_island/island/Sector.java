@@ -51,7 +51,6 @@ public class Sector {
     public Sector(int x, int y) {
         this.x = x;
         this.y = y;
-        createPlant(); //todo вынести в класс День и вызывать в начале дня
         for (Fauna typeOfAnimal : Fauna.values()) {
             CreateAnimal(x, y, typeOfAnimal);
         }
@@ -77,7 +76,7 @@ public class Sector {
         return currentCountsOfAnimal;
     }
 
-    private void createPlant() {
+    public void createPlant() {
         currentCountOfPlants = RandomNumber.get(MAX_COUNT_OF_PLANTS);
     }
 

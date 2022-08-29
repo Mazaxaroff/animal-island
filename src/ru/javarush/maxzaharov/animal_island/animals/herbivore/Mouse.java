@@ -12,7 +12,7 @@ import java.util.HashMap;
 public class Mouse extends Herbivorous {
     private double currentSatiety = 0.01;
     private int speed = 1;
-    private int maxChild = 10;
+    private int maxChild = 5;
     private double weight = 0.05;
     private double maxSatiety = 0.01;
     private String emoji = "\uD83D\uDC01";
