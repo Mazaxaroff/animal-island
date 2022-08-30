@@ -86,10 +86,10 @@ public class Sector {
 
     private void CreateAnimal(int x, int y, Fauna typeOfAnimal) {
         currentCountsOfAnimal.put(typeOfAnimal, RandomNumber.get(maxCountsOfAnimal.get(typeOfAnimal)));
-      sectorFilling(typeOfAnimal, x, y, currentCountsOfAnimal.get(typeOfAnimal), World.populations);
+        sectorFilling(typeOfAnimal, x, y, currentCountsOfAnimal.get(typeOfAnimal), World.populations);
     }
 
-    public void sectorFilling(Fauna typeOfAnimal, int x, int y, int count, HashMap<Fauna, ArrayList<Animal>> population ){
+    public void sectorFilling(Fauna typeOfAnimal, int x, int y, int count, HashMap<Fauna, ArrayList<Animal>> population) {
         HashMap<Fauna, ArrayList<Animal>> populations = population;
         for (int i = 0; i < count; i++) {
             switch (typeOfAnimal) {

@@ -1,6 +1,7 @@
 package ru.javarush.maxzaharov.animal_island.life_cycle;
 
 import ru.javarush.maxzaharov.animal_island.animals.Fauna;
+import ru.javarush.maxzaharov.animal_island.island.Island;
 import ru.javarush.maxzaharov.animal_island.island.Sector;
 import ru.javarush.maxzaharov.animal_island.island.World;
 import ru.javarush.maxzaharov.animal_island.services.Counters;
@@ -63,12 +64,16 @@ public class LifeCycle {
         }
     }
 
-    private static void plantsReborn(Sector[][] island){
+    private static void plantsReborn(Sector[][] island) {
         Arrays.stream(island).flatMap(Arrays::stream).forEach(sector -> sector.createPlant());
     }
 
     private static void hello() {
-        System.out.println("Добро пожаловать в симуляцию острова с животными!");
+        System.out.println("Добро пожаловать в симуляцию острова с животными!\n" +
+                "Сейчас будет создан остров с размерами " + Island.HEIGHT_OF_ISLAND + "x" + Island.WIDTH_OF_ISLAND +
+                " и заселен случайным количеством животных.\n" + "Ниже будет приведена статистика состояния острова " +
+                "в течении " + COUNT_OF_DAYS + " дней.\n"
+        );
     }
 
     private static void printCountOfAllAnimal() {
@@ -96,7 +101,7 @@ public class LifeCycle {
 
     public static void start(Sector[][] island) {
         hello();
-        for (int i = 1; i < COUNT_OF_DAYS+1; i++) {
+        for (int i = 1; i < COUNT_OF_DAYS + 1; i++) {
             System.out.println("День " + i);
             plantsReborn(island);
             printCountOfAllAnimal();

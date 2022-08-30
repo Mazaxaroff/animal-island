@@ -12,7 +12,7 @@ import java.util.HashMap;
 public class Counters {
     public static void currentCountsOfAllAnimal(HashMap<Fauna, ArrayList<Animal>> population) {
         for (Fauna typeOfAnimal : Fauna.values()) {
-            if (World.populations.get(typeOfAnimal).size()!=0) {
+            if (World.populations.get(typeOfAnimal).size() != 0) {
                 System.out.println(World.getPopulationsSize(typeOfAnimal, population) + " "
                         + typeOfAnimal.toString() + " "
                         + World.populations.get(typeOfAnimal).get(0).getEmoji());
@@ -25,9 +25,9 @@ public class Counters {
 
     public static void currentCountsOfAllCorpses() {
         for (Fauna typeOfAnimal : Fauna.values()) {
-            if (World.populations.get(typeOfAnimal).size()!=0) {
+            if (World.populations.get(typeOfAnimal).size() != 0) {
                 System.out.println(World.corpses.get(typeOfAnimal) + " "
-                        + typeOfAnimal.toString()  + " "
+                        + typeOfAnimal.toString() + " "
                         + World.populations.get(typeOfAnimal).get(0).getEmoji());
             } else {
                 System.out.println(World.corpses.get(typeOfAnimal) + " "

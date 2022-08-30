@@ -7,9 +7,7 @@ import ru.javarush.maxzaharov.animal_island.life_cycle.LifeCycle;
 
 public class Main {
     public static void main(String[] args) {
-        new World();
         Sector[][] island = Island.create();
-
 
         LifeCycle.start(island);
 

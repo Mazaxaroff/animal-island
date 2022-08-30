@@ -14,5 +14,4 @@ public class Island {
         }
         return LAND;
     }
-
 }

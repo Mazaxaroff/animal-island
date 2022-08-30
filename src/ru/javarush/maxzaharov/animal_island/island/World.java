@@ -8,6 +8,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class World {
+
+    public World() {
+        this.populations = populations;
+    }
+
     public static HashMap<Fauna, ArrayList<Animal>> populations = new HashMap<>() {{
         for (Fauna typeOfAnimal : Fauna.values()) {
             put(typeOfAnimal, new ArrayList<>());
@@ -36,15 +41,11 @@ public class World {
         }
     }
 
-    public World() {
-        this.populations = populations;
-    }
-
     public static Animal randomAnimalForAction(Fauna typeOfAnimal, int x, int y) {
         var animalsInSector = populations.get(typeOfAnimal).stream()
                 .filter(animal -> animal.getX() == x && animal.getY() == y && animal.isAlive())
                 .toList();
-        if (animalsInSector.size()==0){
+        if (animalsInSector.size() == 0) {
             return null;
         }
         int indexOfAnimal = RandomNumber.get(animalsInSector.size());
@@ -55,7 +56,7 @@ public class World {
         var animalsInSector = populations.get(typeOfAnimal).stream()
                 .filter(animal -> animal.getX() == x && animal.getY() == y && animal.isAlive() && !animal.equals(self))
                 .toList();
-        if (animalsInSector.size()==0){
+        if (animalsInSector.size() == 0) {
             return null;
         }
         int indexOfAnimal = RandomNumber.get(animalsInSector.size());

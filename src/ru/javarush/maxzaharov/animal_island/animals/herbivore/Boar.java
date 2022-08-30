@@ -5,7 +5,6 @@ import ru.javarush.maxzaharov.animal_island.animals.abstracts.Animal;
 import ru.javarush.maxzaharov.animal_island.island.Sector;
 import ru.javarush.maxzaharov.animal_island.animals.abstracts.Herbivorous;
 import ru.javarush.maxzaharov.animal_island.island.World;
-import ru.javarush.maxzaharov.animal_island.plants.Plant;
 import ru.javarush.maxzaharov.animal_island.services.RandomNumber;
 
 import java.util.HashMap;
@@ -83,19 +82,19 @@ public class Boar extends Herbivorous {
 
     @Override
     public void eat(Sector[][] island) {
-       int wayOfEating = RandomNumber.get(RandomNumber.WAY_OF_EATING);
-       if (wayOfEating==0){
-           super.eat(island);
-       }else {
-           if (this.getCurrentSatiety() != this.getMaxSatiety()) {
-               Fauna availableTypeOfAnimal = island[getX()][getY()].getAnimalAbleToEat(this.getChanceToCatch());
-               int attempt = RandomNumber.get(RandomNumber.HUNDRED_PERCENT);
-               if (availableTypeOfAnimal!= null && attempt <= this.getChanceToCatch().get(availableTypeOfAnimal)) {
-                   Animal victim = World.randomAnimalForAction(availableTypeOfAnimal, getX(), getY());
-                   this.setCurrentSatiety(Math.min(getCurrentSatiety() + victim.getWeight(), this.getMaxSatiety()));
-                   victim.die(island);
-               }
-           }
-       }
+        int wayOfEating = RandomNumber.get(RandomNumber.WAY_OF_EATING);
+        if (wayOfEating == 0) {
+            super.eat(island);
+        } else {
+            if (this.getCurrentSatiety() != this.getMaxSatiety()) {
+                Fauna availableTypeOfAnimal = island[getX()][getY()].getAnimalAbleToEat(this.getChanceToCatch());
+                int attempt = RandomNumber.get(RandomNumber.HUNDRED_PERCENT);
+                if (availableTypeOfAnimal != null && attempt <= this.getChanceToCatch().get(availableTypeOfAnimal)) {
+                    Animal victim = World.randomAnimalForAction(availableTypeOfAnimal, getX(), getY());
+                    this.setCurrentSatiety(Math.min(getCurrentSatiety() + victim.getWeight(), this.getMaxSatiety()));
+                    victim.die(island);
+                }
+            }
+        }
     }
 }
